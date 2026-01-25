@@ -1,0 +1,26 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const projects = await getCollection("projects");
+---
+
+<BaseLayout title="Projects">
+    <section class="max-w-6xl mx-auto px-6 py-20">
+        <h1 class="text-4xl font-bold mb-10">Projects</h1>
+
+        <ul class="grid md:grid-cols-2 gap-8">
+        {projects.map((project: CollectionEntry<"projects">) => (
+            <li>
+            <a
+                href={`/projects/${project.slug}`}
+                class="block p-6 border border-zinc-800 rounded-xl hover:border-white transition"
+            >
+                <h2 class="text-xl font-semibold">{project.data.title}</h2>
+                <p class="text-zinc-400 mt-2">{project.data.description}</p>
+            </a>
+            </li>
+        ))}
+        </ul>
+  </section>
+</BaseLayout>
