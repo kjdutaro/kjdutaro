@@ -31,7 +31,7 @@ const schemaMarkup = {
   canonical={`/projects/${entry.slug}`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
-  
+  <div class="min-w-[100vw] w-[100vw] shrink-0 min-h-full pt-20 pb-24 overflow-y-auto">
   <article class="max-w-3xl mx-auto px-4 md:px-8 py-16">
     <div class="mb-8">
       <h1 class="text-4xl font-bold mb-4 text-zinc-100">{title}</h1>
@@ -83,6 +83,7 @@ const schemaMarkup = {
       )}
     </div>
   </article>
+  </div>
 </BaseLayout>
 
 <style is:global>

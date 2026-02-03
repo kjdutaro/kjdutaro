@@ -14,7 +14,8 @@ const sorted = published.sort((a, b) =>
   description="Read my articles about web development, full-stack development, and modern technologies."
   canonical="/blog"
 >
-    <section class="py-16 px-4 md:px-8 max-w-5xl mx-auto">
+  <div class="min-w-[100vw] w-[100vw] shrink-0 h-full min-h-0 overflow-hidden flex flex-col justify-center items-center pt-20 pb-24 md:pb-28">
+    <section class="w-full px-4 md:px-8 max-w-5xl mx-auto">
         <h1 class="text-4xl font-bold mb-4 text-zinc-100">Blog</h1>
         <p class="text-zinc-400 mb-12 max-w-2xl">
             Articles and insights about web development, modern technologies, and best practices.
@@ -58,4 +59,5 @@ const sorted = published.sort((a, b) =>
         ))}
         </ul>
     </section>
+  </div>
 </BaseLayout>

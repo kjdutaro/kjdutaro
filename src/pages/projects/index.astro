@@ -4,68 +4,70 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectCard from "../../components/ui/ProjectCard.astro";
 
 const projects = await getCollection("projects");
-const sorted = projects.sort((a, b) => 
-  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+const sorted = projects.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
-
-// Categorize projects
-const featured = sorted.filter(p => p.data.featured);
-const unfeatured = sorted.filter(p => !p.data.featured);
+const featured = sorted.filter((p) => p.data.featured);
+const unfeatured = sorted.filter((p) => !p.data.featured);
 ---
 
-<BaseLayout 
-  title="Projects – Kristee Joy Dutaro" 
-  description="View my portfolio of web development projects including full-stack applications, fintech platforms, and mobile apps."
+<BaseLayout
+  title="Projects – Kristee Joy Dutaro"
+  description="Web development projects: static sites, WordPress themes, and modern web applications."
   canonical="/projects"
 >
-    <section class="py-16 px-4 md:px-8 max-w-5xl mx-auto">
-        <h1 class="text-4xl font-bold mb-4 text-zinc-100">Projects</h1>
-        <p class="text-zinc-400 mb-12 max-w-2xl">
-            A collection of projects showcasing my expertise in full-stack development, UI/UX design, and modern web technologies. Browse featured projects first, or explore all my work below.
-        </p>
+  <div class="min-w-[100vw] w-[100vw] shrink-0 h-full min-h-0 overflow-hidden flex flex-col justify-center items-center pt-20 pb-24 md:pb-28">
+  <section class="w-full px-4 md:px-6 lg:px-8 max-w-5xl mx-auto">
+    <h1 class="font-heading text-3xl md:text-4xl font-semibold tracking-tight text-[var(--text-primary)] mb-4">
+      Projects
+    </h1>
+    <p class="text-[var(--text-muted)] max-w-2xl mb-12 leading-relaxed">
+      A selection of work across static sites, WordPress themes, and modern web apps.
+    </p>
 
-        {featured.length > 0 && (
-            <div class="mb-16">
-                <h2 class="text-2xl font-semibold mb-6 text-zinc-100 flex items-center gap-2">
-                    <span class="text-2xl">⭐</span> Featured Projects
-                </h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    {featured.map((project: CollectionEntry<"projects">) => (
-                        <ProjectCard
-                            title={project.data.title}
-                            description={project.data.description}
-                            tech={project.data.tech}
-                            github={project.data.github}
-                            liveLink={project.data.liveLink}
-                            image={project.data.image}
-                            featured={project.data.featured}
-                            href={`/projects/${project.slug}`}
-                        />
-                    ))}
-                </div>
-            </div>
-        )}
+    {featured.length > 0 && (
+      <div class="mb-16">
+        <h2 class="font-heading text-xl font-semibold text-[var(--text-primary)] mb-6">
+          Featured
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          {featured.map((project: CollectionEntry<"projects">) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tech={project.data.tech}
+              github={project.data.github}
+              liveLink={project.data.liveLink}
+              image={project.data.image}
+              featured={project.data.featured}
+              href={`/projects/${project.slug}`}
+            />
+          ))}
+        </div>
+      </div>
+    )}
 
-        {unfeatured.length > 0 && (
-            <div>
-                <h2 class="text-2xl font-semibold mb-6 text-zinc-100 flex items-center gap-2">
-                    <span class="text-2xl">📁</span> Other Projects & Prototypes
-                </h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    {unfeatured.map((project: CollectionEntry<"projects">) => (
-                        <ProjectCard
-                            title={project.data.title}
-                            description={project.data.description}
-                            tech={project.data.tech}
-                            github={project.data.github}
-                            liveLink={project.data.liveLink}
-                            image={project.data.image}
-                            featured={project.data.featured}
-                            href={`/projects/${project.slug}`}
-                        />
-                    ))}
-                </div>
-            </div>
-        )}
+    {unfeatured.length > 0 && (
+      <div>
+        <h2 class="font-heading text-xl font-semibold text-[var(--text-primary)] mb-6">
+          More work
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          {unfeatured.map((project: CollectionEntry<"projects">) => (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tech={project.data.tech}
+              github={project.data.github}
+              liveLink={project.data.liveLink}
+              image={project.data.image}
+              featured={project.data.featured}
+              href={`/projects/${project.slug}`}
+            />
+          ))}
+        </div>
+      </div>
+    )}
   </section>
+  </div>
 </BaseLayout>
