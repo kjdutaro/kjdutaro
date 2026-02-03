@@ -8,16 +8,27 @@ const sorted = certifications.sort((a, b) =>
 );
 ---
 
-<section class="py-16 md:py-20 px-4 md:px-8 max-w-5xl mx-auto">
-  <h2 class="text-3xl font-heading font-bold mb-12 text-[--accent-primary]">Certifications & Achievements</h2>
-  
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-    {sorted.map((cert) => (
-      <CertificationBadge
-        title={cert.data.title}
-        issuer={cert.data.issuer}
-        date={cert.data.date}
-      />
-    ))}
+<section
+  aria-label="Certifications"
+  class="min-w-[100vw] w-max shrink-0 h-full min-h-0 flex flex-row items-stretch pt-20 pb-24 md:pb-28 bg-[var(--bg-primary)]"
+>
+  <div class="parallax-strip flex-1 flex flex-row w-full min-h-0" data-parallax-rate="0.12">
+  <div class="section-rail section-rail--projects">
+    <span class="section-rail-text">Certifications</span>
+  </div>
+
+  <div class="flex-1 flex justify-center items-center min-h-0">
+    <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {sorted.map((cert) => (
+          <CertificationBadge
+            title={cert.data.title}
+            issuer={cert.data.issuer}
+            date={cert.data.date}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
   </div>
 </section>

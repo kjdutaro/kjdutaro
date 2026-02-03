@@ -1,111 +1,127 @@
 ---
+interface Props { column?: 1 | 2 | 3; }
+const { column } = Astro.props;
 ---
 
-<section class="py-16 md:py-20 px-4 md:px-8 max-w-5xl mx-auto">
-  <h2 class="text-3xl font-heading font-bold mb-12 text-accent">Design Prototypes</h2>
-  
-  <p class="text-neutral-600 dark:text-neutral-400 mb-12 leading-relaxed font-sans">
-    Beyond coded projects, I create interactive UI/UX designs and prototypes in Figma. These showcase design thinking, user experience principles, and interactive prototyping capabilities.
-  </p>
-  
-  <div class="grid grid-cols-1 gap-12 md:gap-16">
-    <!-- DigiPay -->
-    <div class="group">
-      <div class="mb-6">
-        <h3 class="text-2xl font-bold mb-2">DigiPay</h3>
-        <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-          A comprehensive payroll management system design. Interactive prototype demonstrating employee management, salary calculations, and real-time dashboard functionality.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-3 py-1 text-sm rounded-full bg-accent/10 dark:bg-accent/20 text-accent font-semibold">Figma</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-accent/10 dark:bg-accent/20 text-accent font-semibold">UI/UX Design</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-accent/10 dark:bg-accent/20 text-accent font-semibold">Prototyping</span>
-        </div>
-      </div>
-      <div class="space-y-4">
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 font-semibold mb-3">Key Features:</p>
-        <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <li>✓ Employee management and profile interfaces</li>
-          <li>✓ Salary calculation workflows</li>
-          <li>✓ Payment processing screens</li>
-          <li>✓ Real-time dashboard visualization</li>
-          <li>✓ Report generation interfaces</li>
-        </ul>
-      </div>
-    </div>
+<section
+  aria-label="Design Prototypes"
+  class="min-w-[100vw] w-max shrink-0 h-full min-h-0 flex flex-row items-stretch pt-20 pb-24 md:pb-28 bg-[var(--bg-primary)]"
+>
+  <div class="parallax-strip flex-1 flex flex-row w-full min-h-0" data-parallax-rate="0.12">
+  <div class="section-rail section-rail--projects">
+    <span class="section-rail-text">Design</span>
+  </div>
 
-    <!-- FixDVO -->
-    <div class="group">
-      <div class="mb-6">
-        <h3 class="text-2xl font-bold mb-2">FixDVO</h3>
-        <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-          A construction worker marketplace platform design. Interactive prototype showcasing job matching, worker profiles, messaging, and payment integration flows.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-3 py-1 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Figma</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">UI/UX Design</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Marketplace Design</span>
-        </div>
-      </div>
-      <div class="space-y-4 mb-6">
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 font-semibold mb-3">Design Highlights:</p>
-        <ul class="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-          <li>✓ Intuitive job marketplace interface</li>
-          <li>✓ Worker profile showcase with skill tags</li>
-          <li>✓ Real-time communication flow</li>
-          <li>✓ Secure payment interaction design</li>
-          <li>✓ Rating and review system</li>
-        </ul>
-      </div>
-      <div class="mt-4 p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
-        <a href="https://www.figma.com/proto/OjqONEukCUv81y2oi9S6vH/fixDVO?node-id=1-4&starting-point-node-id=1%3A4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-accent hover:text-accent-dark font-semibold transition-colors">
-          View Interactive Prototype →
-        </a>
-      </div>
-    </div>
+  <div class="flex-1 flex justify-center items-center min-h-0">
+    <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+      {!column && (
+        <>
+          <p class="text-[var(--text-muted)] mb-12 leading-relaxed font-sans">
+            Beyond coded projects, I create interactive UI/UX designs and prototypes in Figma. These showcase design thinking, user experience principles, and interactive prototyping capabilities.
+          </p>
+          <div class="grid grid-cols-1 gap-12 md:gap-16">
+            <!-- DigiPay -->
+            <div class="group">
+              <div class="mb-6">
+                <h3 class="font-heading text-2xl font-semibold text-[var(--text-primary)] mb-2">DigiPay</h3>
+                <p class="text-[var(--text-muted)] mb-4">
+                  A comprehensive payroll management system design. Interactive prototype demonstrating employee management, salary calculations, and real-time dashboard functionality.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">Figma</span>
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">UI/UX Design</span>
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">Prototyping</span>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <p class="text-sm text-[var(--text-muted)] font-semibold mb-3">Key Features:</p>
+                <ul class="space-y-2 text-sm text-[var(--text-muted)]">
+                  <li>✓ Employee management and profile interfaces</li>
+                  <li>✓ Salary calculation workflows</li>
+                  <li>✓ Payment processing screens</li>
+                  <li>✓ Real-time dashboard visualization</li>
+                  <li>✓ Report generation interfaces</li>
+                </ul>
+              </div>
+            </div>
 
-    <!-- Foodies -->
-    <div class="group">
-      <div class="mb-6">
-        <h3 class="text-2xl font-bold mb-2">Foodies Recipe App</h3>
-        <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-          A mobile recipe application with comprehensive UI/UX design prototypes. Interactive Figma designs showcase the complete user experience from onboarding through recipe discovery and sharing.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-3 py-1 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Figma</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Mobile Design</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Animation</span>
-        </div>
-      </div>
-      <div class="space-y-4 mb-6">
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 font-semibold mb-3">Included Prototypes:</p>
-        <ul class="space-y-3">
-          <li class="text-sm">
-            <strong class="text-zinc-800 dark:text-zinc-200">Splash Screen:</strong>
-            <p class="text-zinc-600 dark:text-zinc-400">Animated splash screen with smooth transitions and engaging onboarding experience</p>
-            <a href="https://www.figma.com/proto/gac3bJGBsbqNFW0IivRkPO/Foodies?node-id=2-91" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">
-              View Splash →
-            </a>
-          </li>
-          <li class="text-sm">
-            <strong class="text-zinc-800 dark:text-zinc-200">Mobile App:</strong>
-            <p class="text-zinc-600 dark:text-zinc-400">Complete mobile app interface with recipe discovery and interaction flows</p>
-            <a href="https://www.figma.com/proto/gac3bJGBsbqNFW0IivRkPO/Foodies?node-id=55-3&starting-point-node-id=55%3A3" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">
-              View Mobile App →
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-        <p><strong class="text-zinc-800 dark:text-zinc-200">Design Highlights:</strong></p>
-        <ul class="space-y-1 ml-4">
-          <li>✓ Modern color palette inspired by food and cooking</li>
-          <li>✓ Clear typography hierarchy for readability</li>
-          <li>✓ Intuitive navigation patterns</li>
-          <li>✓ Interactive prototype demonstrating user flows</li>
-          <li>✓ Accessibility considerations throughout</li>
-        </ul>
-      </div>
+            <!-- FixDVO -->
+            <div class="group">
+              <div class="mb-6">
+                <h3 class="font-heading text-2xl font-semibold text-[var(--text-primary)] mb-2">FixDVO</h3>
+                <p class="text-[var(--text-muted)] mb-4">
+                  A construction worker marketplace platform design. Interactive prototype showcasing job matching, worker profiles, messaging, and payment integration flows.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">Figma</span>
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">UI/UX Design</span>
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">Marketplace Design</span>
+                </div>
+              </div>
+              <div class="space-y-4 mb-6">
+                <p class="text-sm text-[var(--text-muted)] font-semibold mb-3">Design Highlights:</p>
+                <ul class="space-y-2 text-sm text-[var(--text-muted)]">
+                  <li>✓ Intuitive job marketplace interface</li>
+                  <li>✓ Worker profile showcase with skill tags</li>
+                  <li>✓ Real-time communication flow</li>
+                  <li>✓ Secure payment interaction design</li>
+                  <li>✓ Rating and review system</li>
+                </ul>
+              </div>
+              <div class="mt-4 p-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)]">
+                <a href="https://www.figma.com/proto/OjqONEukCUv81y2oi9S6vH/fixDVO?node-id=1-4&starting-point-node-id=1%3A4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[var(--accent)] hover:text-[var(--accent-hover)] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] rounded px-2 py-1">
+                  View Interactive Prototype →
+                </a>
+              </div>
+            </div>
+
+            <!-- Foodies -->
+            <div class="group">
+              <div class="mb-6">
+                <h3 class="font-heading text-2xl font-semibold text-[var(--text-primary)] mb-2">Foodies Recipe App</h3>
+                <p class="text-[var(--text-muted)] mb-4">
+                  A mobile recipe application with comprehensive UI/UX design prototypes. Interactive Figma designs showcase the complete user experience from onboarding through recipe discovery and sharing.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">Figma</span>
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">Mobile Design</span>
+                  <span class="px-2.5 py-1 text-sm rounded-lg bg-[var(--accent-muted)] text-[var(--accent)] font-medium">Animation</span>
+                </div>
+              </div>
+              <div class="space-y-4 mb-6">
+                <p class="text-sm text-[var(--text-muted)] font-semibold mb-3">Included Prototypes:</p>
+                <ul class="space-y-3">
+                  <li class="text-sm">
+                    <strong class="text-[var(--text-primary)]">Splash Screen:</strong>
+                    <p class="text-[var(--text-muted)]">Animated splash screen with smooth transitions and engaging onboarding experience</p>
+                    <a href="https://www.figma.com/proto/gac3bJGBsbqNFW0IivRkPO/Foodies?node-id=2-91" target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors">
+                      View Splash →
+                    </a>
+                  </li>
+                  <li class="text-sm">
+                    <strong class="text-[var(--text-primary)]">Mobile App:</strong>
+                    <p class="text-[var(--text-muted)]">Complete mobile app interface with recipe discovery and interaction flows</p>
+                    <a href="https://www.figma.com/proto/gac3bJGBsbqNFW0IivRkPO/Foodies?node-id=55-3&starting-point-node-id=55%3A3" target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors">
+                      View Mobile App →
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-2 text-sm text-[var(--text-muted)]">
+                <p><strong class="text-[var(--text-primary)]">Design Highlights:</strong></p>
+                <ul class="space-y-1 ml-4">
+                  <li>✓ Modern color palette inspired by food and cooking</li>
+                  <li>✓ Clear typography hierarchy for readability</li>
+                  <li>✓ Intuitive navigation patterns</li>
+                  <li>✓ Interactive prototype demonstrating user flows</li>
+                  <li>✓ Accessibility considerations throughout</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
+  </div>
   </div>
 </section>

@@ -1,31 +1,40 @@
 ---
 import { ArrowRight, User } from '@lucide/astro';
 ---
-<section class="py-16 md:py-20 px-4 md:px-8 max-w-5xl mx-auto flex flex-col items-start justify-center min-h-[calc(100vh-80px)]">
+
+<section
+  aria-label="Hero"
+  class="min-w-[100vw] w-[100vw] shrink-0 h-full min-h-0 overflow-hidden flex flex-col justify-center items-center pt-20 pb-24 md:pb-28"
+>
+  <div class="parallax-strip flex-1 flex flex-col justify-center items-center w-full min-h-0" data-parallax-rate="0.12">
+  <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto flex flex-col justify-center">
     <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-neutral-900 dark:text-neutral-100 mb-6">
-            Hi, I'm <span class="text-accent">Kristee Joy Dutaro</span>
-        </h1>
-        <h2 class="text-xl md:text-2xl font-heading font-semibold text-neutral-700 dark:text-neutral-300 mb-6">
-            Web Developer
-        </h2>
-        <p class="text-base md:text-lg font-sans text-neutral-700 dark:text-neutral-300 max-w-2xl mb-8 leading-relaxed">
-            I build responsive, scalable websites and web applications. From static HTML/CSS/JS sites to dynamic applications with modern frameworks, I create solutions that perform and delight users.
-        </p>
-        <div class="flex flex-col sm:flex-row flex-wrap gap-4">
-            <a 
-                href="#projects" 
-                class="inline-block text-center font-heading text-base px-6 py-3 rounded-lg bg-accent hover:bg-accent-dark text-white shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-                <ArrowRight size={20} class="inline mr-2 align-middle" aria-hidden="true" /> View My Work
-            </a>
-            <a 
-                href="#about" 
-                class="inline-block text-center font-heading text-base px-6 py-3 rounded-lg border border-accent text-accent hover:bg-accent/10 dark:hover:bg-accent/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-                <User size={20} class="inline mr-2 align-middle" aria-hidden="true" /> Learn More
-            </a>
-        </div>
+      <p class="text-sm font-medium text-[var(--text-subtle)] uppercase tracking-wider mb-4" aria-hidden="true">
+        Web Developer
+      </p>
+      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.1] mb-6">
+        Hi, I'm <span class="text-[var(--accent)]">Kristee Joy Dutaro</span>
+      </h1>
+      <p class="text-base md:text-lg text-[var(--text-muted)] max-w-2xl leading-relaxed mb-10">
+        I build responsive, scalable websites and web applications. From static sites to dynamic apps with modern frameworks, I create solutions that perform and delight users.
+      </p>
+      <div class="flex flex-col sm:flex-row flex-wrap gap-3">
+        <a
+          href="/#projects"
+          class="btn btn-primary inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg font-medium text-sm transition-colors"
+        >
+          <ArrowRight size={18} aria-hidden="true" />
+          View My Work
+        </a>
+        <a
+          href="/#about"
+          class="btn btn-secondary inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg font-medium text-sm transition-colors"
+        >
+          <User size={18} aria-hidden="true" />
+          About Me
+        </a>
+      </div>
     </div>
+  </div>
+  </div>
 </section>
-    

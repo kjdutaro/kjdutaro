@@ -2,27 +2,80 @@
 import { getCollection } from "astro:content";
 import ExperienceCard from "../ui/ExperienceCard.astro";
 
+interface Props { column?: 1 | 2; }
+const { column } = Astro.props;
+
 const experiences = await getCollection("experience");
 const sorted = experiences.sort((a, b) => {
   const aDate = a.data.endDate || new Date();
   const bDate = b.data.endDate || new Date();
   return new Date(bDate).getTime() - new Date(aDate).getTime();
 });
+const mid = Math.ceil(sorted.length / 2);
+const firstHalf = sorted.slice(0, mid);
+const secondHalf = sorted.slice(mid);
 ---
 
-<section class="py-16 md:py-20 px-4 md:px-8 max-w-5xl mx-auto">
-  <h2 class="text-3xl font-heading font-bold mb-12 text-[--accent-primary]">Experience</h2>
-  
-  <div class="space-y-6 md:space-y-8">
-    {sorted.map((exp) => (
-      <ExperienceCard
-        title={exp.data.title}
-        company={exp.data.company}
-        startDate={exp.data.startDate}
-        endDate={exp.data.endDate}
-        description={exp.data.description}
-        current={exp.data.current}
-      />
-    ))}
+<section
+  aria-label="Experience"
+  class="min-w-[100vw] w-max shrink-0 h-full min-h-0 flex flex-row items-stretch pt-20 pb-24 md:pb-28 bg-[var(--bg-primary)]"
+>
+  <div class="parallax-strip flex-1 flex flex-row w-full min-h-0" data-parallax-rate="0.12">
+  <div class="section-rail section-rail--projects">
+    <span class="section-rail-text">Experience</span>
+  </div>
+
+  <div class="flex-1 flex justify-center items-center min-h-0">
+    <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+      {!column && (
+        <div>
+          <div class="space-y-6 md:space-y-8">
+            {sorted.map((exp) => (
+              <ExperienceCard
+                title={exp.data.title}
+                company={exp.data.company}
+                startDate={exp.data.startDate}
+                endDate={exp.data.endDate}
+                description={exp.data.description}
+                current={exp.data.current}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      {column === 1 && (
+        <div>
+          <div class="space-y-6 md:space-y-8">
+            {firstHalf.map((exp) => (
+              <ExperienceCard
+                title={exp.data.title}
+                company={exp.data.company}
+                startDate={exp.data.startDate}
+                endDate={exp.data.endDate}
+                description={exp.data.description}
+                current={exp.data.current}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      {column === 2 && (
+        <div>
+          <div class="space-y-6 md:space-y-8">
+            {secondHalf.map((exp) => (
+              <ExperienceCard
+                title={exp.data.title}
+                company={exp.data.company}
+                startDate={exp.data.startDate}
+                endDate={exp.data.endDate}
+                description={exp.data.description}
+                current={exp.data.current}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
   </div>
 </section>

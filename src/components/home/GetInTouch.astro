@@ -1,117 +1,168 @@
 ---
 import { Mail, Phone, Github, Linkedin } from '@lucide/astro';
+
+interface Props { column?: 1 | 2; }
+const { column } = Astro.props;
 ---
----
 
-<section id="get-in-touch" class="py-16 md:py-20 px-4 md:px-8 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-heading font-bold text-accent mb-12">Get In Touch</h2>
-    
-    <div class="grid md:grid-cols-2 gap-12">
-      <!-- Direct Contact -->
-      <div>
-        <h3 class="text-xl font-heading font-semibold mb-6">Direct Contact</h3>
-        <p class="text-zinc-600 dark:text-zinc-400 mb-6 font-body">Reach me directly via email or phone</p>
-        
-        <div class="space-y-4">
-          <a 
-            href="mailto:kjdutaro@gmail.com"
-            class="flex items-center gap-4 p-4 rounded-lg border border-accent/20 dark:border-accent/30 hover:border-accent hover:bg-accent/5 dark:hover:bg-accent/10 transition-all duration-300"
-          >
-            <Mail size={24} class="text-accent shrink-0" aria-hidden="true" />
+<section
+  id="contact"
+  aria-label="Contact"
+  class="min-w-[100vw] w-max shrink-0 h-full min-h-0 flex flex-row items-stretch pt-20 pb-24 md:pb-28 bg-[var(--bg-primary)]"
+>
+  <div class="parallax-strip flex-1 flex flex-row w-full min-h-0" data-parallax-rate="0.12">
+  <div class="section-rail section-rail--projects">
+    <span class="section-rail-text">Contact</span>
+  </div>
+
+  <div class="flex-1 flex justify-center items-center min-h-0">
+    <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+      {!column && (
+        <>
+          <div class="grid md:grid-cols-2 gap-12">
             <div>
-              <p class="text-sm text-zinc-600 dark:text-zinc-400 font-body">Email</p>
-              <p class="font-semibold text-zinc-900 dark:text-zinc-100 font-heading">kjdutaro@gmail.com</p>
+              <p class="text-[var(--text-muted)] mb-6 max-w-md">Reach me by email or phone, or connect on GitHub and LinkedIn.</p>
+              <div class="space-y-4">
+                <a href="mailto:kjdutaro@gmail.com" class="flex items-center gap-4 p-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]">
+                  <Mail size={22} class="text-[var(--accent)] shrink-0" aria-hidden="true" />
+                  <div><p class="text-xs text-[var(--text-subtle)]">Email</p><p class="font-medium text-[var(--text-primary)]">kjdutaro@gmail.com</p></div>
+                </a>
+                <a href="tel:+639561793552" class="flex items-center gap-4 p-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]">
+                  <Phone size={22} class="text-[var(--accent)] shrink-0" aria-hidden="true" />
+                  <div><p class="text-xs text-[var(--text-subtle)]">Phone</p><p class="font-medium text-[var(--text-primary)]">+63 956 179 3552</p></div>
+                </a>
+                <div class="pt-4 border-t border-[var(--border-subtle)]">
+                  <p class="text-sm text-[var(--text-muted)] mb-3">Connect</p>
+                  <div class="flex gap-3">
+                    <a href="https://github.com/kjdutaro" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2" aria-label="GitHub"><Github size={20} aria-hidden="true" /></a>
+                    <a href="https://linkedin.com/in/kjdutaro" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2" aria-label="LinkedIn"><Linkedin size={20} aria-hidden="true" /></a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </a>
-
-          <a 
-            href="tel:+639561793552"
-            class="flex items-center gap-4 p-4 rounded-lg border border-accent/20 dark:border-accent/30 hover:border-accent hover:bg-accent/5 dark:hover:bg-accent/10 transition-all duration-300"
-          >
-            <Phone size={24} class="text-accent shrink-0" aria-hidden="true" />
             <div>
-              <p class="text-sm text-zinc-600 dark:text-zinc-400 font-body">Phone</p>
-              <p class="font-semibold text-zinc-900 dark:text-zinc-100 font-heading">+63 956 179 3552</p>
+              <h3 class="font-heading font-semibold text-lg text-[var(--text-primary)] mb-6">Send a message</h3>
+              <form id="contact-form" class="space-y-4">
+                <div><label for="name" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Name</label><input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors" placeholder="Your name" /></div>
+                <div><label for="email" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Email</label><input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors" placeholder="your@email.com" /></div>
+                <div><label for="subject" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Subject</label><input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors" placeholder="What's this about?" /></div>
+                <div><label for="message" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Message</label><textarea id="message" name="message" required rows="4" class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors resize-none" placeholder="Tell me about your project..."></textarea></div>
+                <button type="submit" class="btn btn-primary w-full h-11 rounded-lg font-medium text-sm">Send message</button>
+                <p id="form-status" class="text-sm text-[var(--text-muted)] text-center" aria-live="polite"></p>
+              </form>
             </div>
-          </a>
-
-          <div class="pt-4 border-t border-neutral-200 dark:border-neutral-800">
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">Connect on social media:</p>
-            <div class="flex gap-4">
-              <a href="https://github.com/kjdutaro" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg border border-accent/20 dark:border-accent/30 hover:border-accent hover:bg-accent/5 dark:hover:bg-accent/10 transition-colors" aria-label="GitHub">
-                <Github size={20} class="text-accent" aria-hidden="true" />
-              </a>
-              <a href="https://linkedin.com/in/kjdutaro" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg border border-accent/20 dark:border-accent/30 hover:border-accent hover:bg-accent/5 dark:hover:bg-accent/10 transition-colors" aria-label="LinkedIn">
-                <Linkedin size={20} class="text-accent" aria-hidden="true" />
-              </a>
+          </div>
+        </>
+      )}
+      {column === 1 && (
+        <div>
+          <p class="text-[var(--text-muted)] mb-6 max-w-md">
+            Reach me by email or phone, or connect on GitHub and LinkedIn.
+          </p>
+          <div class="space-y-4">
+            <a
+              href="mailto:kjdutaro@gmail.com"
+              class="flex items-center gap-4 p-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
+            >
+              <Mail size={22} class="text-[var(--accent)] shrink-0" aria-hidden="true" />
+              <div>
+                <p class="text-xs text-[var(--text-subtle)]">Email</p>
+                <p class="font-medium text-[var(--text-primary)]">kjdutaro@gmail.com</p>
+              </div>
+            </a>
+            <a
+              href="tel:+639561793552"
+              class="flex items-center gap-4 p-4 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
+            >
+              <Phone size={22} class="text-[var(--accent)] shrink-0" aria-hidden="true" />
+              <div>
+                <p class="text-xs text-[var(--text-subtle)]">Phone</p>
+                <p class="font-medium text-[var(--text-primary)]">+63 956 179 3552</p>
+              </div>
+            </a>
+            <div class="pt-4 border-t border-[var(--border-subtle)]">
+              <p class="text-sm text-[var(--text-muted)] mb-3">Connect</p>
+              <div class="flex gap-3">
+                <a
+                  href="https://github.com/kjdutaro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="p-2.5 rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2"
+                  aria-label="GitHub"
+                >
+                  <Github size={20} aria-hidden="true" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/kjdutaro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="p-2.5 rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={20} aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Contact Form -->
-      <div>
-        <h3 class="text-xl font-semibold mb-6">Send a Message</h3>
-        <form id="contact-form" class="space-y-4">
-          <div>
-            <label for="name" class="block text-sm font-medium mb-2">Name</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name"
-              required
-              class="w-full px-4 py-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-              placeholder="Your name"
-            />
-          </div>
-
-          <div>
-            <label for="email" class="block text-sm font-medium mb-2">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email"
-              required
-              class="w-full px-4 py-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-              placeholder="your@email.com"
-            />
-          </div>
-
-          <div>
-            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
-            <input 
-              type="text" 
-              id="subject" 
-              name="subject"
-              required
-              class="w-full px-4 py-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-              placeholder="What's this about?"
-            />
-          </div>
-
-          <div>
-            <label for="message" class="block text-sm font-medium mb-2">Message</label>
-            <textarea 
-              id="message" 
-              name="message"
-              required
-              rows="5"
-              class="w-full px-4 py-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 dark:placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-              placeholder="Tell me about your project..."
-            ></textarea>
-          </div>
-
-          <button 
-            type="submit"
-            class="btn-primary w-full"
-          >
-            Send Message
-          </button>
-
-          <p id="form-status" class="text-sm text-center"></p>
-        </form>
-      </div>
+      )}
+      {column === 2 && (
+        <div>
+          <form id="contact-form" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors"
+                placeholder="What's this about?"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-[var(--text-primary)] mb-1.5">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="4"
+                class="w-full px-4 py-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-default)] text-[var(--text-primary)] placeholder-[var(--text-subtle)] focus:outline-none focus:ring-2 focus:ring-[var(--focus-ring)] focus:ring-offset-2 focus:ring-offset-[var(--bg-primary)] focus:border-transparent transition-colors resize-none"
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full h-11 rounded-lg font-medium text-sm">
+              Send message
+            </button>
+            <p id="form-status" class="text-sm text-[var(--text-muted)] text-center" aria-live="polite"></p>
+          </form>
+        </div>
+      )}
     </div>
+  </div>
+  </div>
 </section>
 
 <script>
@@ -127,25 +178,22 @@ import { Mail, Phone, Github, Linkedin } from '@lucide/astro';
         name: formData.get('name') as string,
         email: formData.get('email') as string,
         subject: formData.get('subject') as string,
-        message: formData.get('message') as string
+        message: formData.get('message') as string,
       };
 
       try {
         statusElement.textContent = 'Sending...';
-        statusElement.className = 'text-sm text-blue-600 dark:text-blue-400 text-center';
+        statusElement.setAttribute('class', 'text-sm text-[var(--text-muted)] text-center');
 
-        // Send to Formspree - replace YOUR_FORM_ID with actual form ID
         const response = await fetch('https://formspree.io/f/myzwpkzp', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
         });
 
         if (response.ok) {
-          statusElement.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
-          statusElement.className = 'text-sm text-green-600 dark:text-green-400 text-center';
+          statusElement.textContent = "Message sent. I'll get back to you soon.";
+          statusElement.setAttribute('class', 'text-sm text-[var(--accent)] text-center');
           form.reset();
           setTimeout(() => {
             statusElement.textContent = '';
@@ -153,9 +201,9 @@ import { Mail, Phone, Github, Linkedin } from '@lucide/astro';
         } else {
           throw new Error('Failed to send');
         }
-      } catch (error) {
-        statusElement.textContent = '✗ Error sending message. Please try emailing directly at kjdutaro@gmail.com';
-        statusElement.className = 'text-sm text-red-600 dark:text-red-400 text-center';
+      } catch {
+        statusElement.textContent = 'Something went wrong. Please email kjdutaro@gmail.com directly.';
+        statusElement.setAttribute('class', 'text-sm text-[var(--error)] text-center');
       }
     });
   }

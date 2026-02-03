@@ -1,55 +1,45 @@
 ---
 import { Globe, Paintbrush, Wrench, FileText, Languages, MapPin } from '@lucide/astro';
 const services = [
-  {
-    icon: Globe,
-    title: "Web Development",
-    description: "Custom static sites, dynamic web applications with modern frameworks (Astro, React, Next.js). Responsive design, performance optimization, and clean code practices."
-  },
-  {
-    icon: Paintbrush,
-    title: "WordPress Theme Development",
-    description: "Custom WordPress themes built from Figma designs. Theme customization, plugin development, and template creation for client websites."
-  },
-  {
-    icon: Wrench,
-    title: "Website Maintenance",
-    description: "Ongoing website updates, security patches, performance optimization, bug fixes, and continuous improvement of existing sites."
-  },
-  {
-    icon: FileText,
-    title: "Blog Content Generation",
-    description: "Professional blog content creation with AI-assisted writing. SEO optimization, editing, and content strategy to drive organic traffic."
-  },
-  {
-    icon: Languages,
-    title: "Multi-language Localization",
-    description: "Website translation and localization in multiple languages. Ensuring consistent messaging and user experience across different regions."
-  },
-  {
-    icon: MapPin,
-    title: "Mapbox Integration",
-    description: "Interactive map solutions with Mapbox. Location-based features, tour guides, attraction mapping, and geographic data visualization."
-  }
+  { icon: Globe, title: "Web Development", description: "Static sites and dynamic apps with Astro, React, Next.js. Responsive design, performance, and clean code." },
+  { icon: Paintbrush, title: "WordPress Themes", description: "Custom themes from Figma. Theme customization, plugin work, and template creation." },
+  { icon: Wrench, title: "Maintenance", description: "Updates, security, performance, and ongoing improvement for existing sites." },
+  { icon: FileText, title: "Blog & Content", description: "AI-assisted blog content, SEO, and content strategy for organic traffic." },
+  { icon: Languages, title: "Localization", description: "Multi-language translation and localization for consistent UX across regions." },
+  { icon: MapPin, title: "Mapbox", description: "Interactive maps, tour guides, and location-based features with Mapbox." },
 ];
 ---
 
-<section class="py-16 md:py-20 px-4 md:px-8 max-w-5xl mx-auto">
-  <h2 class="text-3xl font-heading font-bold mb-12 text-accent">Services</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-    {services.map((service) => {
-      const Icon = service.icon;
-      return (
-        <div class="group p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-accent/50 hover:bg-accent/5 transition-all duration-300">
-          <div class="mb-4"><Icon size={36} class="text-accent" aria-hidden="true" /></div>
-          <h3 class="text-lg font-heading font-semibold mb-3 text-neutral-900 dark:text-neutral-100 group-hover:text-accent transition-colors">
-            {service.title}
-          </h3>
-          <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed font-sans">
-            {service.description}
-          </p>
-        </div>
-      );
-    })}
+<section
+  aria-label="Services"
+  class="min-w-[100vw] w-max shrink-0 h-full min-h-0 flex flex-row items-stretch pt-20 pb-24 md:pb-28 bg-[var(--bg-primary)]"
+>
+  <div class="parallax-strip flex-1 flex flex-row w-full min-h-0" data-parallax-rate="0.12">
+  <div class="section-rail section-rail--projects">
+    <span class="section-rail-text">Services</span>
+  </div>
+
+  <div class="flex-1 flex justify-center items-center min-h-0">
+    <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {services.map((service) => {
+          const Icon = service.icon;
+          return (
+            <div class="p-5 md:p-6 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors duration-200 group">
+              <div class="mb-4">
+                <Icon size={28} class="text-[var(--accent)]" aria-hidden="true" />
+              </div>
+              <h3 class="font-heading font-semibold text-lg text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
   </div>
 </section>
