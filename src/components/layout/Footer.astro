@@ -1,51 +1,55 @@
-<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/20 backdrop-blur-sm transition-colors">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-            <!-- Brand -->
-            <div>
-                <a href="/" class="text-lg font-bold text-slate-900 dark:text-white mb-3 block">KJ</a>
-                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Full-stack developer crafting beautiful, functional web experiences.</p>
-            </div>
-
-            <!-- Navigation -->
-            <div>
-                <h3 class="font-semibold text-slate-900 dark:text-white mb-4 text-sm uppercase tracking-wider">Navigation</h3>
-                <ul class="space-y-2">
-                    <li><a href="/#about" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
-                    <li><a href="/projects" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
-                    <li><a href="/blog" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a></li>
-                    <li><a href="/#contact" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Resources -->
-            <div>
-                <h3 class="font-semibold text-slate-900 dark:text-white mb-4 text-sm uppercase tracking-wider">Resources</h3>
-                <ul class="space-y-2">
-                    <li><a href="/blog/rss.xml" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">RSS Feed</a></li>
-                    <li><a href="https://github.com/kjdutaro" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">GitHub</a></li>
-                    <li><a href="https://linkedin.com/in/kjdutaro" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">LinkedIn</a></li>
-                </ul>
-            </div>
-
-            <!-- Legal -->
-            <div>
-                <h3 class="font-semibold text-slate-900 dark:text-white mb-4 text-sm uppercase tracking-wider">Legal</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="text-sm text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Divider -->
-        <div class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                © {new Date().getFullYear()} Kristee Joy Dutaro. All rights reserved.
-            </p>
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Designed & built with ❤️ using Astro & Tailwind CSS
-            </p>
-        </div>
+---
+import { Github, Linkedin } from '@lucide/astro';
+---
+<footer class="sticky bottom-0 z-40 shrink-0 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)]/95 backdrop-blur-sm transition-colors">
+  <!-- Horizontal scroll progress bar (only visible when main scrolls horizontally) -->
+  <div id="scroll-progress-wrap" class="h-0.5 w-full bg-[var(--border-subtle)] overflow-hidden hidden" role="presentation" aria-hidden="true">
+    <div id="scroll-progress-fill" class="h-full bg-[var(--accent)] transition-[width] duration-150 ease-out" style="width: 0%"></div>
+  </div>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-3 text-sm">
+    <p class="text-[var(--text-subtle)]">
+      © {new Date().getFullYear()} Kristee Joy Dutaro
+    </p>
+    <div class="flex items-center gap-4">
+      <a href="/#contact" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] rounded px-1">
+        Contact
+      </a>
+      <a href="https://github.com/kjdutaro" target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] rounded p-1" aria-label="GitHub">
+        <Github size={18} aria-hidden="true" />
+      </a>
+      <a href="https://linkedin.com/in/kjdutaro" target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] rounded p-1" aria-label="LinkedIn">
+        <Linkedin size={18} aria-hidden="true" />
+      </a>
     </div>
+  </div>
 </footer>
+
+<script is:inline>
+  (function() {
+    var wrap = document.getElementById('scroll-progress-wrap');
+    var fill = document.getElementById('scroll-progress-fill');
+    if (!wrap || !fill) return;
+    function update() {
+      var main = document.getElementById('main-scroll');
+      if (!main) return;
+      var isHorizontal = main.getAttribute('data-scroll-direction') === 'horizontal';
+      var maxScroll = main.scrollWidth - main.clientWidth;
+      if (isHorizontal && maxScroll > 0) {
+        wrap.classList.remove('hidden');
+        var pct = Math.round((main.scrollLeft / maxScroll) * 100);
+        fill.style.width = pct + '%';
+      } else {
+        wrap.classList.add('hidden');
+      }
+    }
+    function attach() {
+      var main = document.getElementById('main-scroll');
+      if (main) main.addEventListener('scroll', update);
+      update();
+    }
+    window.addEventListener('resize', update);
+    if (document.readyState === 'complete') attach();
+    else window.addEventListener('load', attach);
+    document.addEventListener('astro:after-swap', attach);
+  })();
+</script>
