@@ -3,6 +3,7 @@ title: DigiPay
 description: A Figma UI/UX design prototype for a comprehensive payroll application. Features interactive prototypes demonstrating employee management, salary calculations, and real-time dashboard functionality.
 date: 2024-05-15
 featured: false
+category: prototype
 tech: [Figma, "UI/UX Design", Prototyping, "Interaction Design"]
 ---
 

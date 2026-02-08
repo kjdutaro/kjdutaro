@@ -3,6 +3,7 @@ title: WordPress Custom Themes
 description: A portfolio of 9+ WordPress themes customized and refined from various sources and Figma designs. Covers travel, technology, services, and entertainment industries with comprehensive field customization using Advanced Custom Fields (ACF).
 date: 2025-01-05
 featured: true
+category: client
 tech:
   - WordPress
   - PHP

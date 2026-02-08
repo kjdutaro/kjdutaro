@@ -3,6 +3,7 @@ title: Exponential LSTM
 description: A machine learning project implementing LSTM (Long Short-Term Memory) neural networks for time series prediction with exponential growth patterns. Demonstrates deep learning fundamentals using TensorFlow and PyTorch.
 date: 2023-10-20
 featured: false
+category: academic
 tech: ["Python", "TensorFlow", "PyTorch", "NumPy", "Pandas", "Jupyter", "Machine Learning"]
 github: https://github.com/kjdutaro/Exponential-Long-Short-Term-Memory
 ---

@@ -16,9 +16,10 @@ const unfeatured = sorted.filter((p) => !p.data.featured);
 ---
 
 <BaseLayout
-  title={`Projects – ${profile.name}`}
+  title={`Projects – ${profile.name} | Web Development Portfolio`}
   description="Web development projects: static sites, WordPress themes, and modern web applications."
   canonical="/projects"
+  keywords="web development portfolio, WordPress themes, tourism websites, international clients, Mapbox integration"
 >
   <section class="c-section">
     <div class="c-container">
@@ -50,6 +51,7 @@ const unfeatured = sorted.filter((p) => !p.data.featured);
                   liveLink={project.data.liveLink}
                   image={project.data.image}
                   featured={project.data.featured}
+                  category={project.data.category}
                   href={`/projects/${project.slug}`}
                 />
               ))}
@@ -75,6 +77,7 @@ const unfeatured = sorted.filter((p) => !p.data.featured);
                   liveLink={project.data.liveLink}
                   image={project.data.image}
                   featured={project.data.featured}
+                  category={project.data.category}
                   href={`/projects/${project.slug}`}
                 />
               ))}

@@ -3,6 +3,7 @@ title: Timesheets Management System
 description: An internal MVP timesheet management system developed as an inhouse web application during my internship at Jairosoft. Demonstrates full-stack thinking and rapid prototyping for employee time tracking and billing.
 date: 2024-08-15
 featured: false
+category: personal
 tech: ["No-Code Platform", "Database Design", "Project Management", "User Experience"]
 ---
 

@@ -1,0 +1,33 @@
+---
+/**
+ * 404 — page not found. Pixel design, link back to home.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Home } from "@lucide/astro";
+import profile from "../data/profile";
+
+---
+
+<BaseLayout
+  title={`Page not found – ${profile.name}`}
+  description="The page you're looking for doesn't exist or has been moved."
+  canonical="/404"
+>
+  <section class="c-section flex items-center min-h-[calc(100vh-12rem)]">
+    <div class="c-container text-center">
+      <p class="font-mono text-xs text-[var(--accent)] mb-4 tracking-wider" aria-hidden="true">
+        <span class="text-[var(--text-subtle)]">//</span> 404
+      </p>
+      <h1 class="font-pixel text-2xl sm:text-3xl md:text-4xl text-[var(--text-primary)] mb-4">
+        Page not found
+      </h1>
+      <p class="text-[var(--text-muted)] max-w-md mx-auto mb-8">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a href="/" class="c-btn c-btn-primary inline-flex items-center gap-2 min-h-[44px] h-11 px-6">
+        <Home size={18} aria-hidden="true" />
+        Back to home
+      </a>
+    </div>
+  </section>
+</BaseLayout>

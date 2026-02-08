@@ -13,11 +13,16 @@ import profile from "../data/profile";
 const {
   title = `${profile.name} – ${profile.title}`,
   description = `${profile.title} specializing in static sites, WordPress theme development, and website maintenance.`,
-  ogImage = "/og-image.png",
+  keywords,
+  ogImage = "/logo.svg",
   canonical = Astro.url.pathname,
 } = Astro.props;
 
-/* JSON-LD structured data for Person / Portfolio */
+const defaultKeywords =
+  "freelance web developer, remote frontend developer, WordPress theme developer, tourism website developer, React developer, Astro developer, web developer Philippines, international web development";
+const metaKeywords = keywords ?? defaultKeywords;
+
+/* JSON-LD structured data for Person / Portfolio — location + international service area */
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -28,6 +33,18 @@ const schemaMarkup = {
   telephone: profile.contact.phone,
   sameAs: [profile.social.github, profile.social.linkedin],
   knowsAbout: profile.knowsAbout,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "PH",
+  },
+  areaServed: {
+    "@type": "Place",
+    name: "Worldwide",
+  },
+  workLocation: {
+    "@type": "Place",
+    name: "Remote",
+  },
 };
 ---
 
@@ -38,10 +55,12 @@ const schemaMarkup = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta
-      name="keywords"
-      content="web developer, frontend, React, TypeScript, JavaScript, Astro, WordPress, UI/UX"
-    />
+    <meta name="keywords" content={metaKeywords} />
+
+    <!-- Geo + international audience -->
+    <meta name="geo.region" content="PH" />
+    <meta name="geo.placename" content="Philippines" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={new URL(canonical, Astro.site)} />

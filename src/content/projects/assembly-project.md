@@ -3,6 +3,7 @@ title: Assembly Project
 description: Low-level systems programming project demonstrating x86-64 assembly language fundamentals and system-level optimization techniques. Covers computer architecture, memory management, and performance optimization.
 date: 2023-08-15
 featured: false
+category: academic
 tech: ["x86-64 Assembly", "C", "Systems Programming", "GDB", "Performance Optimization"]
 github: https://github.com/kjdutaro/assembly-project
 ---

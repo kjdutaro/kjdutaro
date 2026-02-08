@@ -17,6 +17,9 @@ const projects = defineCollection({
     github: z.string().optional(),
     liveLink: z.string().optional(),
     featured: z.boolean().default(false),
+    category: z
+      .enum(["client", "personal", "academic", "prototype"])
+      .default("personal"),
   }),
 });
 

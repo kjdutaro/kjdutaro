@@ -13,33 +13,29 @@
 - [x] Freelance Web Developer (Oct 2024 - Present)
 - [x] Fullstack Developer Intern - Jairosoft, Inc. (Jul-Aug 2024)
 
-### Certifications (6/6 Created)
-- [x] CodeYourFuture - Full-Stack Development Program
-- [x] AWS Community Day
-- [x] Startup Summit
-- [x] Career Talks
-- [x] Oracle Academy - Database Badge
-- [x] Oracle Academy - Java Badge
+### Certifications (3/3 Current)
+- [x] IT Specialist - Network Security (Certiport, May 2025)
+- [x] IT Specialist - Databases (Certiport, June 2024)
+- [x] IT Specialist - Java (Certiport, December 2022)
 
-### Projects (12/12 Created with Details)
-- [x] DigiPay - React payroll application
-- [x] FixDVO - Construction worker platform
-- [x] Foodies Recipe App - Flutter mobile app
-- [x] Foodies Splash Screen - Figma UI design
-- [x] Tours & Hiking Sites - Travel guide website
-- [x] WordPress Theme Conversion - PHP/WordPress
-- [x] Suru App - Progressive Web App (PWA)
-- [x] M&S Inventory Management - TypeScript system
-- [x] Exponential LSTM - Machine learning project
-- [x] Dronesia - Drone technology proposal
-- [x] Assembly Project - Low-level systems programming
-- [x] ISKOlar - Scholarship management system
-- [x] Gritly - Gym tracker application
+### Projects (12/12 with category labels)
+- [x] OneJourney Tours (client)
+- [x] WordPress Custom Themes (client)
+- [x] Tourism Sites Portfolio (client)
+- [x] WordPress Theme Conversion (client)
+- [x] M&S Inventory Management (personal)
+- [x] Suru App (personal)
+- [x] Timesheets Management System (personal)
+- [x] Assembly Project (academic)
+- [x] Exponential LSTM (academic)
+- [x] DigiPay (prototype – Figma)
+- [x] FixDVO (prototype – Figma)
+- [x] Foodies Recipe App (prototype – Figma)
 
 ### Blog Posts
-- [x] 1 blog post created (iskolar.md - ready for expansion)
-- [x] RSS feed structure implemented
-- [x] Blog system ready for 20+ posts
+- [x] 1 published post (timesheets-management-learnings)
+- [x] RSS feed at /blog/rss.xml
+- [x] Blog system ready for more posts
 
 ### Skills (30+ Documented)
 - [x] Languages: 8 languages documented
@@ -73,13 +69,12 @@
 - [x] SkillBadge.astro
 - [x] ExperienceCard.astro
 - [x] CertificationBadge.astro
-- [x] ContactCTA.astro
 - [x] Experience.astro (home section)
 - [x] Skills.astro (home section)
 - [x] Certifications.astro (home section)
 - [x] ProjectsPreview.astro (enhanced)
 - [x] Hero.astro (enhanced)
-- [x] About.astro (enhanced)
+- [x] GetInTouch.astro (contact section)
 - [x] Header.astro (existing)
 - [x] Footer.astro (existing)
 
@@ -102,12 +97,12 @@
 
 ## File Structure ✅
 
-### New Content Files (18)
+### Content Files (current)
 ```
 src/content/
 ├── experience/ (2 files)
-├── certifications/ (6 files)
-└── projects/ (12 files - 10 new, 2 enhanced)
+├── certifications/ (3 files)
+└── projects/ (12 files, each with category)
 ```
 
 ### New Component Files (8)
@@ -293,7 +288,7 @@ src/components/
 | Total Pages | 18 |
 | Projects | 12 |
 | Experience Entries | 2 |
-| Certifications | 6 |
+| Certifications | 3 |
 | Blog Posts (Current) | 1 |
 | Skills Categories | 4 |
 | Components Created | 8 |

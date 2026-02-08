@@ -2,6 +2,7 @@
 title: Suru App
 description: A progressive web app (PWA) built with vanilla JavaScript and local storage, featuring offline functionality and synchronization capabilities.
 date: 2023-12-10
+category: personal
 tech: [JavaScript, PWA, Local Storage, Service Workers]
 github: https://github.com/kjdutaro/suru-app
 liveLink: https://suru-app.vercel.app

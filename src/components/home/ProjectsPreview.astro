@@ -42,6 +42,7 @@ const display = featured.length > 0 ? featured : projects.slice(0, 4);
             liveLink={project.data.liveLink}
             image={project.data.image}
             featured={project.data.featured}
+            category={project.data.category}
             href={`/projects/${project.slug}`}
           />
         ))

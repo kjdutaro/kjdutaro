@@ -3,6 +3,7 @@ title: FixDVO
 description: A Figma UI/UX design prototype for a construction worker marketplace platform. Interactive prototype showcasing job matching, worker profiles, messaging, and payment integration flows.
 date: 2024-04-10
 featured: false
+category: prototype
 tech: [Figma, "UI/UX Design", Prototyping, "Marketplace Design"]
 ---
 

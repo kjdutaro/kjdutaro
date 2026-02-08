@@ -3,6 +3,7 @@ title: OneJourney Tours
 description: Primary ongoing client web application featuring website maintenance, blog content generation, multi-language localization, and SEO optimization. Hosted on Firebase with continuous feature development.
 date: 2025-01-15
 featured: true
+category: client
 tech: ["HTML5", "CSS3", "JavaScript", "Firebase", "SEO", "Localization", "Content Management"]
 liveLink: https://onejourneytours.com/
 ---

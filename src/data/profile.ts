@@ -53,14 +53,14 @@ const profile: Profile = {
   name: "Kristee Joy Dutaro",
   title: "Frontend / Web Developer",
   tagline:
-    "I build responsive, performant websites and web apps — from static sites and WordPress themes to modern frameworks like Astro and React.",
+    "I build responsive, performant websites and web apps for clients worldwide — from tourism sites and WordPress themes to modern frameworks like Astro and React.",
   bio: [
     "I'm a Frontend / Web Developer focused on building responsive, performant websites and web applications. My work spans from vanilla HTML/CSS/JavaScript to modern frameworks like Astro and React, with an emphasis on clean code and user experience.",
     "I freelance on custom web development — static sites with Mapbox, WordPress theme customization from Figma, and website maintenance including blog content and multi-language localization for international audiences.",
     "My primary client is OneJourney Tours, where I handle site development, AI-assisted blog content, and localization across 10+ languages to support organic search.",
     "I also have experience in project management, QA, database design, and technical documentation, and hold Certiport certifications in Network Security, Java, and Databases.",
   ],
-  location: "Philippines",
+  location: "Philippines (Remote / Worldwide)",
   contact: {
     email: "kjdutaro@gmail.com",
     phone: "+63 956 179 3552",
@@ -69,9 +69,9 @@ const profile: Profile = {
     github: "https://github.com/kjdutaro",
     linkedin: "https://linkedin.com/in/kjdutaro",
   },
-  siteUrl: "https://kjdutaro.xyz",
+  siteUrl: "https://kjdutaro.github.io",
   highlights: [
-    { label: "Tourism Sites", value: "59+" },
+    { label: "Tourism Sites (20+ countries)", value: "59+" },
     { label: "Languages", value: "10+" },
     { label: "WP Themes", value: "9+" },
   ],
@@ -145,6 +145,9 @@ const profile: Profile = {
     "UI/UX Design",
     "SEO",
     "Localization",
+    "Tourism Web Development",
+    "Multi-language Localization",
+    "International SEO",
   ],
 };
 

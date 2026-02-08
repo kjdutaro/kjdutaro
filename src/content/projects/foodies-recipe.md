@@ -3,6 +3,7 @@ title: Foodies Recipe App
 description: A mobile recipe application design featuring splash screen and mobile interface prototypes. Interactive Figma prototypes showcase app onboarding, recipe discovery, and user experience flows.
 date: 2024-03-20
 featured: false
+category: prototype
 tech: [Figma, "UI/UX Design", Prototyping, "Mobile Design"]
 github: https://github.com/kjdutaro/foodies-recipe
 ---
