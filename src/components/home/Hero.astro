@@ -7,6 +7,9 @@
 import { ArrowRight, Mail } from "@lucide/astro";
 import profile from "../../data/profile";
 
+/** Set to true to show highlight stats (Tourism Sites, Languages, WP Themes) */
+const showHighlights = false;
+
 ---
 
 <section
@@ -47,12 +50,12 @@ import profile from "../../data/profile";
         >
       </p>
 
-      <!-- Name (pixel font, accent) -->
+      <!-- Name: "Hi, I'm" unchanged; name only is bigger, responsive -->
       <h1
         class="font-pixel text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[var(--text-primary)] leading-[1.3] mb-6"
       >
         Hi, I'm
-        <span class="text-[var(--accent)] block mt-2">
+        <span class="text-[var(--accent)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold block mt-2">
           {profile.name}
         </span>
       </h1>
@@ -78,21 +81,22 @@ import profile from "../../data/profile";
         </a>
       </div>
 
-      <!-- Highlight stats with pixel borders -->
-      <div class="flex flex-wrap gap-4 sm:gap-6">
-        {
-          profile.highlights.map((h) => (
-            <div class="px-5 py-3 border-2 border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] hover:shadow-[2px_2px_0_0_var(--accent)] transition-all">
-              <p class="text-2xl md:text-3xl font-bold text-[var(--accent)] font-heading mb-0">
-                {h.value}
-              </p>
-              <p class="text-xs font-mono text-[var(--text-muted)] mb-0 uppercase tracking-wider">
-                {h.label}
-              </p>
-            </div>
-          ))
-        }
-      </div>
+      {showHighlights && (
+        <div class="flex flex-wrap gap-4 sm:gap-6">
+          {
+            profile.highlights.map((h) => (
+              <div class="px-5 py-3 border-2 border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] hover:shadow-[2px_2px_0_0_var(--accent)] transition-all">
+                <p class="text-2xl md:text-3xl font-bold text-[var(--accent)] font-heading mb-0">
+                  {h.value}
+                </p>
+                <p class="text-xs font-mono text-[var(--text-muted)] mb-0 uppercase tracking-wider">
+                  {h.label}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      )}
     </div>
   </div>
 </section>
