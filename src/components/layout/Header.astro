@@ -1,133 +1,149 @@
 ---
-import { Menu, X, Sun, Moon } from '@lucide/astro';
+/**
+ * Header — sticky top navigation with pixel design.
+ * Pixel font logo, terminal-style nav, theme toggle, mobile menu.
+ * Theme: inline script for instant toggle; theme.ts re-applies on view transitions.
+ */
+import { Menu, X, Sun, Moon } from "@lucide/astro";
+import profile from "../../data/profile";
+
+/** Navigation links — update here to change both desktop and mobile nav. */
+const navLinks = [
+  { href: "/projects", label: "Projects" },
+  { href: "/resume", label: "Resume" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#contact", label: "Contact" },
+];
 ---
-<header class="sticky top-0 z-50 shrink-0 border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]/95 backdrop-blur-md transition-colors duration-300">
-  <nav class="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 py-4 flex justify-between items-center" aria-label="Main navigation">
+
+<header
+  class="sticky top-0 z-50 shrink-0 border-b-2 border-[var(--border-default)] bg-[var(--bg-primary)]/95 backdrop-blur-md transition-colors duration-300"
+>
+  <nav
+    class="c-container py-4 flex justify-between items-center"
+    aria-label="Main navigation"
+  >
+    <!-- Logo / Home link -->
     <a
       href="/"
-      class="font-heading font-semibold text-[var(--text-primary)] text-lg tracking-tight hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] rounded px-2 py-1"
-      aria-label="KJ Dutaro – Home"
+      class="font-pixel text-sm text-[var(--accent)] hover:no-underline transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] px-2 py-1 border-2 border-transparent hover:border-[var(--accent)] hover:shadow-[2px_2px_0_0_var(--accent)]"
+      aria-label={`${profile.name} – Home`}
     >
       KJ
     </a>
 
-    <div class="flex items-center gap-4">
-      <div class="hidden md:flex items-center gap-8">
-        <a
-          href="/#projects"
-          class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] rounded px-2 py-1"
-        >
-          Projects
-        </a>
-        <a
-          href="/#about"
-          class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] rounded px-2 py-1"
-        >
-          About
-        </a>
-        <a
-          href="/blog"
-          class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] rounded px-2 py-1"
-        >
-          Blog
-        </a>
-        <a
-          href="/#contact"
-          class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] rounded px-2 py-1"
-        >
-          Contact
-        </a>
+    <div class="flex items-center gap-2">
+      <!-- Desktop navigation links -->
+      <div class="hidden md:flex items-center gap-1">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm font-medium font-mono text-[var(--text-muted)] hover:text-[var(--accent)] hover:no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] px-3 py-1.5 border border-transparent hover:border-[var(--border-default)] hover:bg-[var(--bg-elevated)]"
+            >
+              {link.label}
+            </a>
+          ))
+        }
       </div>
+
+      <!-- Theme toggle button (min 44px touch target) -->
       <button
         id="theme-toggle"
         type="button"
         aria-label="Toggle light/dark mode"
         title="Toggle theme"
-        class="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
+        class="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-default)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
       >
-        <Sun size={20} class="dark:hidden" aria-hidden="true" />
-        <Moon size={20} class="hidden dark:block" aria-hidden="true" />
+        <Sun size={18} class="dark:hidden" aria-hidden="true" />
+        <Moon size={18} class="hidden dark:block" aria-hidden="true" />
       </button>
+
+      <!-- Mobile menu toggle (min 44px touch target) -->
       <button
         id="mobile-menu-toggle"
         type="button"
         aria-label="Toggle navigation menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        class="md:hidden p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
+        class="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] border border-transparent hover:border-[var(--border-default)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
       >
-        <Menu size={24} id="menu-icon" aria-hidden="true" />
-        <X size={24} id="close-icon" class="hidden" aria-hidden="true" />
+        <Menu size={22} id="menu-icon" aria-hidden="true" />
+        <X size={22} id="close-icon" class="hidden" aria-hidden="true" />
       </button>
     </div>
   </nav>
 
+  <!-- Mobile menu (terminal-inspired) -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden border-t border-[var(--border-subtle)] bg-[var(--bg-primary)]"
+    class="hidden md:hidden border-t-2 border-[var(--border-default)] bg-[var(--bg-primary)]"
     role="navigation"
     aria-label="Mobile menu"
   >
-    <div class="px-4 py-4 flex flex-col gap-1 max-w-5xl mx-auto">
-      <a href="/#projects" class="px-4 py-3 rounded-lg text-[var(--text-primary)] font-medium hover:bg-[var(--bg-elevated)] hover:text-[var(--accent)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-inset">
-        Projects
-      </a>
-      <a href="/#about" class="px-4 py-3 rounded-lg text-[var(--text-primary)] font-medium hover:bg-[var(--bg-elevated)] hover:text-[var(--accent)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-inset">
-        About
-      </a>
-      <a href="/blog" class="px-4 py-3 rounded-lg text-[var(--text-primary)] font-medium hover:bg-[var(--bg-elevated)] hover:text-[var(--accent)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-inset">
-        Blog
-      </a>
-      <a href="/#contact" class="px-4 py-3 rounded-lg text-[var(--text-primary)] font-medium hover:bg-[var(--bg-elevated)] hover:text-[var(--accent)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-inset">
-        Contact
-      </a>
+    <div class="c-container py-3 flex flex-col gap-0.5">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="px-4 py-3 font-mono text-sm text-[var(--text-primary)] font-medium hover:bg-[var(--bg-elevated)] hover:text-[var(--accent)] hover:no-underline transition-colors focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-inset border-l-2 border-transparent hover:border-[var(--accent)]"
+          >
+            <span class="text-[var(--text-subtle)] mr-2" aria-hidden="true">&gt;</span>
+            {link.label}
+          </a>
+        ))
+      }
     </div>
   </div>
 </header>
 
-<!-- Theme toggle: inline, one listener on document so it works after View Transitions -->
+<!-- Theme toggle — inline for instant response; theme.ts re-syncs on astro:after-swap -->
 <script is:inline>
-  (function() {
+  (function () {
     if (window.__themeToggleReady) return;
     window.__themeToggleReady = true;
-    document.addEventListener('click', function(e) {
-      var btn = (e.target && e.target.closest && e.target.closest('#theme-toggle'));
+    document.addEventListener("click", function (e) {
+      var btn = e.target && e.target.closest && e.target.closest("#theme-toggle");
       if (!btn) return;
       var html = document.documentElement;
-      var isDark = html.classList.contains('dark');
-      if (isDark) {
-        html.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      } else {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
+      var isDark = html.classList.contains("dark");
+      var next = isDark ? "light" : "dark";
+      localStorage.setItem("theme", next);
+      html.classList.toggle("dark", next === "dark");
     });
   })();
 </script>
 
+<!-- Mobile menu handler (re-runs on astro:after-swap for view transitions) -->
 <script>
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+  function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
 
-  if (mobileMenuToggle && mobileMenu && menuIcon && closeIcon) {
-    mobileMenuToggle.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      menuIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-      mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    if (!mobileMenuToggle || !mobileMenu || !menuIcon || !closeIcon) return;
+    if (mobileMenuToggle.hasAttribute("data-mobile-menu-bound")) return;
+    mobileMenuToggle.setAttribute("data-mobile-menu-bound", "true");
+
+    mobileMenuToggle.addEventListener("click", () => {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      mobileMenu.classList.toggle("hidden");
+      menuIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+      mobileMenuToggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
     });
 
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        mobileMenuToggle.setAttribute("aria-expanded", "false");
       });
     });
   }
+
+  initMobileMenu();
+  document.addEventListener("astro:after-swap", initMobileMenu);
 </script>

@@ -1,55 +1,53 @@
 ---
-import { Github, Linkedin } from '@lucide/astro';
+/**
+ * Footer — minimal site footer with pixel styling.
+ * Pixel font copyright, terminal-inspired links, social icons.
+ */
+import { Github, Linkedin } from "@lucide/astro";
+import profile from "../../data/profile";
 ---
-<footer class="sticky bottom-0 z-40 shrink-0 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)]/95 backdrop-blur-sm transition-colors">
-  <!-- Horizontal scroll progress bar (only visible when main scrolls horizontally) -->
-  <div id="scroll-progress-wrap" class="h-0.5 w-full bg-[var(--border-subtle)] overflow-hidden hidden" role="presentation" aria-hidden="true">
-    <div id="scroll-progress-fill" class="h-full bg-[var(--accent)] transition-[width] duration-150 ease-out" style="width: 0%"></div>
+
+<footer
+  class="shrink-0 bg-[var(--bg-primary)] transition-colors relative"
+>
+  <!-- Scanline divider -->
+  <div class="h-1 relative c-scanlines overflow-hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-[var(--border-default)]"></div>
   </div>
-  <div class="max-w-5xl mx-auto px-4 md:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-3 text-sm">
-    <p class="text-[var(--text-subtle)]">
-      © {new Date().getFullYear()} Kristee Joy Dutaro
+
+  <div
+    class="c-container py-6 flex flex-wrap items-center justify-between gap-4 text-sm"
+  >
+    <p class="font-heading text-xs text-[var(--text-subtle)] mb-0 tracking-wide">
+      &copy; {new Date().getFullYear()}
+      <span class="text-[var(--accent)]">{profile.name}</span>
     </p>
-    <div class="flex items-center gap-4">
-      <a href="/#contact" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] rounded px-1">
+    <div class="flex items-center gap-3">
+      <a
+        href="/#contact"
+        class="font-mono text-xs text-[var(--text-muted)] hover:text-[var(--accent)] hover:no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] px-2 py-1 border border-transparent hover:border-[var(--border-default)]"
+      >
         Contact
       </a>
-      <a href="https://github.com/kjdutaro" target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] rounded p-1" aria-label="GitHub">
-        <Github size={18} aria-hidden="true" />
+      <span class="text-[var(--border-default)]" aria-hidden="true">|</span>
+      <a
+        href={profile.social.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center border border-transparent hover:border-[var(--border-default)] hover:shadow-[2px_2px_0_var(--accent)]"
+        aria-label="GitHub"
+      >
+        <Github size={16} aria-hidden="true" />
       </a>
-      <a href="https://linkedin.com/in/kjdutaro" target="_blank" rel="noopener noreferrer" class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] rounded p-1" aria-label="LinkedIn">
-        <Linkedin size={18} aria-hidden="true" />
+      <a
+        href={profile.social.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[var(--text-muted)] hover:text-[var(--accent)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center border border-transparent hover:border-[var(--border-default)] hover:shadow-[2px_2px_0_var(--accent)]"
+        aria-label="LinkedIn"
+      >
+        <Linkedin size={16} aria-hidden="true" />
       </a>
     </div>
   </div>
 </footer>
-
-<script is:inline>
-  (function() {
-    var wrap = document.getElementById('scroll-progress-wrap');
-    var fill = document.getElementById('scroll-progress-fill');
-    if (!wrap || !fill) return;
-    function update() {
-      var main = document.getElementById('main-scroll');
-      if (!main) return;
-      var isHorizontal = main.getAttribute('data-scroll-direction') === 'horizontal';
-      var maxScroll = main.scrollWidth - main.clientWidth;
-      if (isHorizontal && maxScroll > 0) {
-        wrap.classList.remove('hidden');
-        var pct = Math.round((main.scrollLeft / maxScroll) * 100);
-        fill.style.width = pct + '%';
-      } else {
-        wrap.classList.add('hidden');
-      }
-    }
-    function attach() {
-      var main = document.getElementById('main-scroll');
-      if (main) main.addEventListener('scroll', update);
-      update();
-    }
-    window.addEventListener('resize', update);
-    if (document.readyState === 'complete') attach();
-    else window.addEventListener('load', attach);
-    document.addEventListener('astro:after-swap', attach);
-  })();
-</script>

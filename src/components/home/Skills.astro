@@ -1,142 +1,50 @@
 ---
-import { Code2, Zap, Settings, Target } from '@lucide/astro';
+/**
+ * Skills — grouped skill badges with pixel design.
+ * Pixel font group headers, terminal-style icons.
+ */
+import { Code2, Zap, Settings, Target } from "@lucide/astro";
 import SkillBadge from "../ui/SkillBadge.astro";
+import profile from "../../data/profile";
 
-interface Props { column?: 1 | 2; }
-const { column } = Astro.props;
+const { skills } = profile;
 
-const skills = {
-  languages: ["JavaScript", "HTML/CSS", "Python", "Java", "PHP"],
-  frameworks: ["React", "Next.js", "Astro"],
-  tools: ["Git/GitHub", "VS Code", "Cursor IDE", "Figma", "Firebase", "Cloudflare", "Vercel", "Tailwind CSS"],
-  specializations: ["Static Site Generation", "WordPress Theme Development", "Multi-language Localization", "Blog Content Generation", "Mapbox Integration", "Responsive Design"]
-};
+const groups = [
+  { icon: Code2, label: "Languages", items: skills.languages },
+  { icon: Zap, label: "Frameworks & Libraries", items: skills.frameworks },
+  { icon: Settings, label: "Tools & Platforms", items: skills.tools },
+  { icon: Target, label: "Specializations", items: skills.specializations },
+];
 ---
 
-<section
-  aria-label="Skills"
-  class="min-w-[100vw] w-max shrink-0 h-full min-h-0 flex flex-row items-stretch pt-20 pb-24 md:pb-28 bg-[var(--bg-primary)]"
->
-  <div class="parallax-strip flex-1 flex flex-row w-full min-h-0" data-parallax-rate="0.12">
-  <div class="section-rail section-rail--projects">
-    <span class="section-rail-text">Skills</span>
-  </div>
+<section id="skills" aria-label="Skills" class="c-section">
+  <div class="c-container">
+    <p class="c-section-eyebrow">Tech Stack</p>
+    <h2 class="c-section-title">Skills</h2>
+    <p class="c-section-desc">
+      Technologies and tools I work with regularly.
+    </p>
 
-  <div class="flex-1 flex justify-center items-center min-h-0">
-    <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-      {!column && (
-        <>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
-            <div>
-              <h3 class="text-lg font-heading font-semibold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-                <Code2 size={20} class="text-[var(--accent)]" aria-hidden="true" />
-                Languages
-              </h3>
-              <div class="flex flex-wrap gap-3">
-                {skills.languages.map((skill) => (
-                  <SkillBadge name={skill} />
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 class="text-lg font-heading font-semibold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-                <Zap size={20} class="text-[var(--accent)]" aria-hidden="true" />
-                Frameworks & Libraries
-              </h3>
-              <div class="flex flex-wrap gap-3">
-                {skills.frameworks.map((skill) => (
-                  <SkillBadge name={skill} />
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 class="text-lg font-heading font-semibold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-                <Settings size={20} class="text-[var(--accent)]" aria-hidden="true" />
-                Tools & Platforms
-              </h3>
-              <div class="flex flex-wrap gap-3">
-                {skills.tools.map((skill) => (
-                  <SkillBadge name={skill} />
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 class="text-lg font-heading font-semibold mb-4 flex items-center gap-2">
-                <Target size={20} class="text-[var(--accent)]" aria-hidden="true" />
-                Specializations
-              </h3>
-              <div class="flex flex-wrap gap-3">
-                {skills.specializations.map((skill) => (
-                  <SkillBadge name={skill} />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div class="mt-12 p-6 rounded-xl border border-[var(--border-default)] bg-[var(--accent-muted)]/30">
-            <p class="text-sm text-[var(--text-muted)] font-sans">
-              <strong>Note on languages:</strong> HTML/CSS are markup and styling technologies, not programming languages. I focus on practical, hands-on experience with technologies I actively use rather than claiming expertise in every framework.
-            </p>
-          </div>
-        </>
-      )}
-      {column === 1 && (
-        <div class="space-y-10">
-          <div>
-            <h3 class="text-lg font-heading font-semibold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-              <Code2 size={20} class="text-[var(--accent)]" aria-hidden="true" />
-              Languages
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+      {
+        groups.map(({ icon: Icon, label, items }) => (
+          <div class="p-5 border-2 border-[var(--border-default)] bg-[var(--bg-surface)]">
+            <h3 class="text-base font-heading font-semibold text-[var(--text-primary)] mb-4 flex items-center gap-2 pb-3 border-b-2 border-[var(--border-default)]">
+              <Icon
+                size={18}
+                class="text-[var(--accent)]"
+                aria-hidden="true"
+              />
+              {label}
             </h3>
-            <div class="flex flex-wrap gap-3">
-              {skills.languages.map((skill) => (
+            <div class="flex flex-wrap gap-2">
+              {items.map((skill) => (
                 <SkillBadge name={skill} />
               ))}
             </div>
           </div>
-          <div>
-            <h3 class="text-lg font-heading font-semibold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-              <Zap size={20} class="text-[var(--accent)]" aria-hidden="true" />
-              Frameworks & Libraries
-            </h3>
-            <div class="flex flex-wrap gap-3">
-              {skills.frameworks.map((skill) => (
-                <SkillBadge name={skill} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-      {column === 2 && (
-        <div class="space-y-10">
-          <div>
-            <h3 class="text-lg font-heading font-semibold text-[var(--text-primary)] mb-4 flex items-center gap-2">
-              <Settings size={20} class="text-[var(--accent)]" aria-hidden="true" />
-              Tools & Platforms
-            </h3>
-            <div class="flex flex-wrap gap-3">
-              {skills.tools.map((skill) => (
-                <SkillBadge name={skill} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-heading font-semibold mb-4 flex items-center gap-2">
-              <Target size={20} class="text-[var(--accent)]" aria-hidden="true" />
-              Specializations
-            </h3>
-            <div class="flex flex-wrap gap-3">
-              {skills.specializations.map((skill) => (
-                <SkillBadge name={skill} />
-              ))}
-            </div>
-          </div>
-          <div class="p-6 rounded-xl border border-[var(--border-default)] bg-[var(--accent-muted)]/30">
-            <p class="text-sm text-[var(--text-muted)] font-sans">
-              <strong>Note on languages:</strong> HTML/CSS are markup and styling technologies, not programming languages. I focus on practical, hands-on experience with technologies I actively use rather than claiming expertise in every framework.
-            </p>
-          </div>
-        </div>
-      )}
+        ))
+      }
     </div>
-  </div>
   </div>
 </section>

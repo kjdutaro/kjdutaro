@@ -1,4 +1,8 @@
 ---
+/**
+ * CertificationBadge — credential card with pixel design.
+ * Sharp edges, pixel border, accent icon container.
+ */
 interface Props {
   title: string;
   issuer: string;
@@ -12,13 +16,13 @@ const formatDate = (d: Date) => {
 };
 ---
 
-<div class="flex flex-col items-center gap-3 p-5 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors duration-200 group">
-  <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-[var(--accent)] text-white group-hover:scale-105 transition-transform">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+<div class="flex flex-col items-center gap-3 p-5 border-2 border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] hover:shadow-[2px_2px_0_0_var(--accent)] transition-all group">
+  <div class="w-10 h-10 flex items-center justify-center bg-[var(--accent)] text-[var(--bg-primary)]">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
       <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-1.429 5.951 1.429a1 1 0 001.169-1.409l-7-14z"/>
     </svg>
   </div>
   <h4 class="font-heading font-semibold text-[var(--text-primary)] text-center text-sm leading-tight">{title}</h4>
-  <p class="text-xs text-[var(--text-muted)] text-center">{issuer}</p>
-  <p class="text-xs text-[var(--text-subtle)] font-medium">{formatDate(date)}</p>
+  <p class="font-mono text-xs text-[var(--text-muted)] text-center mb-0">{issuer}</p>
+  <p class="font-mono text-xs text-[var(--text-subtle)] mb-0">{formatDate(date)}</p>
 </div>

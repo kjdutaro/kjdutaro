@@ -1,4 +1,7 @@
 ---
+/**
+ * SkillBadge — pixel-styled badge with subtle glow on hover.
+ */
 interface Props {
   name: string;
   category?: string;
@@ -7,6 +10,6 @@ interface Props {
 const { name, category } = Astro.props;
 ---
 
-<span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium bg-[var(--bg-elevated)] text-[var(--accent)] border border-[var(--border-default)] hover:border-[var(--accent)] hover:bg-[var(--accent-muted)] transition-colors">
+<span class="inline-flex items-center px-3 py-1.5 font-mono text-xs font-medium bg-[var(--bg-elevated)] text-[var(--accent)] border border-[var(--border-default)] hover:border-[var(--accent)] hover:bg-[var(--accent-muted)] hover:shadow-[0_0_8px_var(--accent-muted)] transition-all">
   {name}
 </span>

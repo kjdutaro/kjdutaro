@@ -1,47 +1,51 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+/**
+ * ProjectsPreview — featured projects on the homepage with pixel design.
+ * Shows up to 4 featured projects. Falls back to most recent 4.
+ */
+import { getCollection } from "astro:content";
 import ProjectCard from "../ui/ProjectCard.astro";
 
 const projects = await getCollection("projects");
 const featured = projects.filter((p) => p.data.featured).slice(0, 4);
-const sorted = featured.length > 0 ? featured : projects.slice(0, 4);
+const display = featured.length > 0 ? featured : projects.slice(0, 4);
 ---
 
-<section
-  id="projects"
-  aria-label="Projects"
-  class="min-w-[100vw] w-max shrink-0 h-full min-h-0 flex flex-row items-stretch pt-20 pb-24 md:pb-28 bg-[var(--bg-primary)]"
->
-  <div class="section-rail section-rail--projects">
-    <span class="section-rail-text">Projects</span>
-  </div>
+<section id="projects" aria-label="Featured Projects" class="c-section">
+  <div class="c-container">
+    <p class="c-section-eyebrow">Portfolio</p>
 
-  <div class="flex flex-col justify-start items-stretch min-h-0 h-full w-max flex-1 min-w-0 bg-[var(--bg-primary)]">
-    <div class="pl-4 md:pl-6 lg:pl-8 pr-16 md:pr-24 lg:pr-32 w-max flex flex-col min-w-[100vw] bg-[var(--bg-primary)] h-full min-h-0">
-      <div class="flex justify-end w-full min-w-[100vw]">
-        <a
-          href="/projects"
-          class="projects-view-all mt-20 text-sm font-medium text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] rounded px-2 py-1"
-        >
-          View all →
-        </a>
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+      <div>
+        <h2 class="c-section-title">Featured Work</h2>
+        <p class="c-section-desc mb-0">
+          A selection of recent projects across static sites, WordPress themes,
+          and modern web apps.
+        </p>
       </div>
-      <div class="flex-1 flex items-center min-h-0">
-        <div class="grid grid-cols-4 gap-5 projects-preview-grid">
-          {sorted.map((project: CollectionEntry<"projects">) => (
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              tech={project.data.tech}
-              github={project.data.github}
-              liveLink={project.data.liveLink}
-              image={project.data.image}
-              featured={project.data.featured}
-              href={`/projects/${project.slug}`}
-            />
-          ))}
-        </div>
-      </div>
+      <a
+        href="/projects"
+        class="c-link font-mono text-xs text-[var(--accent)] hover:text-[var(--accent-hover)] border border-transparent hover:border-[var(--border-default)] px-3 py-1.5"
+      >
+        View all projects &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+      {
+        display.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            tech={project.data.tech}
+            github={project.data.github}
+            liveLink={project.data.liveLink}
+            image={project.data.image}
+            featured={project.data.featured}
+            href={`/projects/${project.slug}`}
+          />
+        ))
+      }
     </div>
   </div>
 </section>

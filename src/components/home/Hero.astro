@@ -1,40 +1,97 @@
 ---
-import { ArrowRight, User } from '@lucide/astro';
+/**
+ * Hero — full-viewport introduction with pixel design.
+ * Terminal cursor, CRT vignette overlay, pixel-border stat highlights.
+ * All data from centralized profile.
+ */
+import { ArrowRight, Mail } from "@lucide/astro";
+import profile from "../../data/profile";
 ---
 
 <section
-  aria-label="Hero"
-  class="min-w-[100vw] w-[100vw] shrink-0 h-full min-h-0 overflow-hidden flex flex-col justify-center items-center pt-20 pb-24 md:pb-28"
+  id="hero"
+  aria-label="Introduction"
+  class="c-section relative flex items-center min-h-[calc(100vh-5rem)] overflow-hidden"
 >
-  <div class="parallax-strip flex-1 flex flex-col justify-center items-center w-full min-h-0" data-parallax-rate="0.12">
-  <div class="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto flex flex-col justify-center">
+  <!-- CRT vignette overlay -->
+  <div
+    class="c-crt-vignette absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Scanline overlay -->
+  <div
+    class="c-scanlines absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Noise texture overlay -->
+  <div
+    class="c-noise absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="c-container relative z-10">
     <div class="max-w-3xl">
-      <p class="text-sm font-medium text-[var(--text-subtle)] uppercase tracking-wider mb-4" aria-hidden="true">
-        Web Developer
-      </p>
-      <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.1] mb-6">
-        Hi, I'm <span class="text-[var(--accent)]">Kristee Joy Dutaro</span>
-      </h1>
-      <p class="text-base md:text-lg text-[var(--text-muted)] max-w-2xl leading-relaxed mb-10">
-        I build responsive, scalable websites and web applications. From static sites to dynamic apps with modern frameworks, I create solutions that perform and delight users.
-      </p>
-      <div class="flex flex-col sm:flex-row flex-wrap gap-3">
-        <a
-          href="/#projects"
-          class="btn btn-primary inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg font-medium text-sm transition-colors"
+      <!-- Terminal-style eyebrow -->
+      <p
+        class="font-mono text-xs md:text-sm text-[var(--accent)] mb-4 tracking-wider"
+        aria-hidden="true"
+      >
+        <span class="text-[var(--text-subtle)]">&gt;</span> {profile.title}<span
+          class="animate-blink ml-0.5 text-[var(--accent)]">_</span
         >
+      </p>
+
+      <!-- Name (pixel font, accent) -->
+      <h1
+        class="font-pixel text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[var(--text-primary)] leading-[1.3] mb-6"
+      >
+        Hi, I'm
+        <span class="text-[var(--accent)] block mt-2">
+          {profile.name}
+        </span>
+      </h1>
+
+      <!-- Tagline with terminal cursor -->
+      <p
+        class="text-base md:text-lg text-[var(--text-muted)] max-w-2xl leading-relaxed mb-10"
+      >
+        {profile.tagline}<span
+          class="animate-blink ml-0.5 text-[var(--accent)] font-mono"
+          aria-hidden="true">_</span>
+      </p>
+
+      <!-- CTAs (touch-friendly on mobile) -->
+      <div class="flex flex-col sm:flex-row flex-wrap gap-3 mb-10 sm:mb-14">
+        <a href="/#projects" class="c-btn c-btn-primary min-h-[44px] h-11 px-6">
           <ArrowRight size={18} aria-hidden="true" />
           View My Work
         </a>
-        <a
-          href="/#about"
-          class="btn btn-secondary inline-flex items-center justify-center gap-2 h-11 px-6 rounded-lg font-medium text-sm transition-colors"
-        >
-          <User size={18} aria-hidden="true" />
-          About Me
+        <a href="/#contact" class="c-btn c-btn-secondary min-h-[44px] h-11 px-6">
+          <Mail size={18} aria-hidden="true" />
+          Get In Touch
         </a>
       </div>
+
+      <!-- Highlight stats with pixel borders -->
+      <div class="flex flex-wrap gap-4 sm:gap-6">
+        {
+          profile.highlights.map((h) => (
+            <div class="px-5 py-3 border-2 border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] hover:shadow-[2px_2px_0_0_var(--accent)] transition-all">
+              <p class="text-2xl md:text-3xl font-bold text-[var(--accent)] font-heading mb-0">
+                {h.value}
+              </p>
+              <p class="text-xs font-mono text-[var(--text-muted)] mb-0 uppercase tracking-wider">
+                {h.label}
+              </p>
+            </div>
+          ))
+        }
+      </div>
     </div>
-  </div>
   </div>
 </section>

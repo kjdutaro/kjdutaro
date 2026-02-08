@@ -1,161 +1,241 @@
 ---
+/**
+ * Resume page — dynamically rendered with pixel/glitch design.
+ * All data from content collections and profile.
+ */
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { Download, ExternalLink } from "@lucide/astro";
+import profile from "../data/profile";
+
+const experiences = (await getCollection("experience")).sort((a, b) => {
+  const aDate = a.data.endDate || new Date();
+  const bDate = b.data.endDate || new Date();
+  return new Date(bDate).getTime() - new Date(aDate).getTime();
+});
+
+const certifications = (await getCollection("certifications")).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+
+const projects = (await getCollection("projects"))
+  .filter((p) => p.data.featured)
+  .sort(
+    (a, b) =>
+      new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  );
+
+const formatDate = (d: Date) =>
+  new Date(d).toLocaleDateString("en-US", {
+    month: "short",
+    year: "numeric",
+  });
 ---
 
-<BaseLayout 
-  title="Resume – Kristee Joy Dutaro"
-  description="Full resume and CV of Kristee Joy Dutaro, Web Developer based in Philippines"
+<BaseLayout
+  title={`Resume – ${profile.name}`}
+  description={`Resume and CV of ${profile.name}, ${profile.title} based in ${profile.location}`}
   canonical="/resume"
 >
-  <div class="min-w-[100vw] w-[100vw] shrink-0 min-h-full pt-20 pb-24 overflow-y-auto">
-  <article class="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-20">
-    <!-- Header -->
-    <div class="mb-12">
-      <h1 class="text-4xl font-bold mb-2 text-zinc-100">Kristee Joy Dutaro</h1>
-      <p class="text-xl text-blue-400 font-semibold mb-4">Web Developer</p>
-      <div class="flex flex-col md:flex-row gap-6 text-sm text-zinc-400">
-        <a href="mailto:kjdutaro@gmail.com" class="hover:text-zinc-100 transition-colors">kjdutaro@gmail.com</a>
-        <a href="tel:+639561793552" class="hover:text-zinc-100 transition-colors">+63 956 179 3552</a>
-        <span>Philippines</span>
-        <a href="https://github.com/kjdutaro" class="hover:text-zinc-100 transition-colors">github.com/kjdutaro</a>
-        <a href="https://linkedin.com/in/kjdutaro" class="hover:text-zinc-100 transition-colors">linkedin.com/in/kjdutaro</a>
-      </div>
-    </div>
-
-    <!-- Professional Summary -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold mb-4 text-zinc-100">Professional Summary</h2>
-      <p class="text-zinc-300 leading-relaxed">
-        Web developer with expertise in building responsive, performant websites using modern technologies. Specializing in static site generation, WordPress theme development, and website maintenance. Currently freelancing with a focus on custom web solutions, blog content generation, and multi-language localization. Strong foundation in HTML/CSS/JavaScript and modern frameworks (React, Next.js, Astro).
-      </p>
-    </section>
-
-    <!-- Core Competencies -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold mb-4 text-zinc-100">Core Competencies</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <h3 class="font-semibold text-zinc-100 mb-3">Technologies</h3>
-          <ul class="text-zinc-300 space-y-1 text-sm">
-            <li>• HTML5, CSS3, JavaScript, jQuery</li>
-            <li>• React, Next.js, Astro</li>
-            <li>• WordPress & PHP</li>
-            <li>• Python, Java, PHP</li>
-            <li>• Firebase, Cloudflare</li>
-            <li>• Mapbox Integration</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-zinc-100 mb-3">Key Skills</h3>
-          <ul class="text-zinc-300 space-y-1 text-sm">
-            <li>• Website Development & Maintenance</li>
-            <li>• WordPress Theme Development</li>
-            <li>• Blog Content Generation & AI Prompting</li>
-            <li>• Multi-language Localization</li>
-            <li>• SEO Optimization</li>
-            <li>• Project Management & QA Testing</li>
-            <li>• Responsive Web Design</li>
-            <li>• Database Design & Management</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Professional Experience -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold mb-6 text-zinc-100">Professional Experience</h2>
-      
-      <div class="mb-8">
-        <div class="flex justify-between items-start mb-2">
-          <h3 class="text-lg font-semibold text-zinc-100">Freelance Web Developer</h3>
-          <span class="text-sm text-zinc-400">Oct 2024 – Present</span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-3">Self-Employed</p>
-        <ul class="text-zinc-300 space-y-2 text-sm">
-          <li>• Maintain and update OneJourney Tours website with blog content generation and multi-language translation</li>
-          <li>• Developed and deployed 59+ vanilla HTML/CSS/JS tourism websites with Mapbox integration</li>
-          <li>• Created 9+ custom WordPress themes from Figma designs for various clients</li>
-          <li>• Implement SEO optimization strategies for improved search visibility</li>
-          <li>• Manage website performance, security, and hosting infrastructure</li>
-          <li>• Generate AI-assisted blog content and localize for international audiences</li>
-        </ul>
-      </div>
-
-      <div class="mb-8">
-        <div class="flex justify-between items-start mb-2">
-          <h3 class="text-lg font-semibold text-zinc-100">Full-Stack Development Trainee</h3>
-          <span class="text-sm text-zinc-400">2023 – 2024</span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-3">CodeYourFuture</p>
-        <ul class="text-zinc-300 space-y-2 text-sm">
-          <li>• Completed comprehensive bootcamp covering frontend, backend, and database fundamentals</li>
-          <li>• Built multiple projects using React, Node.js, and databases</li>
-          <li>• Learned agile development practices and version control</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Certifications -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold mb-4 text-zinc-100">Certifications & Credentials</h2>
-      <div class="space-y-3">
-        <div class="border-l-2 border-blue-500 pl-4">
-          <p class="font-semibold text-zinc-100">IT Specialist - Network Security</p>
-          <p class="text-sm text-zinc-400">Certiport (Pearson VUE) • May 15, 2025</p>
-        </div>
-        <div class="border-l-2 border-blue-500 pl-4">
-          <p class="font-semibold text-zinc-100">IT Specialist - Databases</p>
-          <p class="text-sm text-zinc-400">Certiport (Pearson VUE) • June 03, 2024</p>
-        </div>
-        <div class="border-l-2 border-blue-500 pl-4">
-          <p class="font-semibold text-zinc-100">IT Specialist - Java</p>
-          <p class="text-sm text-zinc-400">Certiport (Pearson VUE) • December 01, 2022</p>
-        </div>
-        <div class="border-l-2 border-blue-500 pl-4">
-          <p class="font-semibold text-zinc-100">Full-Stack Development Program</p>
-          <p class="text-sm text-zinc-400">CodeYourFuture • 2024</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Notable Projects -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold mb-4 text-zinc-100">Notable Projects</h2>
-      <div class="space-y-4">
-        <div>
-          <p class="font-semibold text-zinc-100"><a href="https://onejourneytours.com/" class="text-blue-400 hover:text-blue-300">OneJourney Tours</a></p>
-          <p class="text-sm text-zinc-400 mb-1">Ongoing client website maintenance, blog generation, and multi-language support</p>
-          <p class="text-sm text-zinc-300">Tech: HTML, CSS, JS, WordPress, SEO, Content Management</p>
-        </div>
-        <div>
-          <p class="font-semibold text-zinc-100">Tourism Sites Portfolio</p>
-          <p class="text-sm text-zinc-400 mb-1">59+ vanilla HTML/CSS/JS tourism websites featuring Mapbox integration</p>
-          <p class="text-sm text-zinc-300">Tech: HTML5, CSS3, JavaScript, Mapbox, Responsive Design</p>
-        </div>
-        <div>
-          <p class="font-semibold text-zinc-100">WordPress Custom Themes</p>
-          <p class="text-sm text-zinc-400 mb-1">9+ custom WordPress themes developed from Figma designs for diverse clients</p>
-          <p class="text-sm text-zinc-300">Tech: WordPress, PHP, Figma, WooCommerce, Responsive Design</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Download Section -->
-    <section class="mt-12 pt-8 border-t border-zinc-800">
-      <h2 class="text-2xl font-bold mb-6 text-zinc-100">Download Resume</h2>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a 
-          href="/resume.pdf" 
-          download
-          class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+  <article class="c-section">
+    <div class="c-container max-w-4xl">
+      <!-- Header -->
+      <div class="mb-12 pb-8 border-b-2 border-[var(--border-default)]">
+        <h1 class="font-pixel text-xl sm:text-2xl md:text-3xl mb-3 text-[var(--text-primary)]">
+          {profile.name}
+        </h1>
+        <p class="font-heading text-lg text-[var(--accent)] font-semibold mb-4">
+          {profile.title}
+        </p>
+        <div
+          class="flex flex-col md:flex-row gap-3 md:gap-6 font-mono text-xs text-[var(--text-muted)]"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-          </svg>
-          Download as PDF
-        </a>
+          <a
+            href={`mailto:${profile.contact.email}`}
+            class="hover:text-[var(--accent)] transition-colors"
+          >
+            {profile.contact.email}
+          </a>
+          <a
+            href={`tel:${profile.contact.phone.replace(/\s/g, "")}`}
+            class="hover:text-[var(--accent)] transition-colors"
+          >
+            {profile.contact.phone}
+          </a>
+          <span>{profile.location}</span>
+          <a
+            href={profile.social.github}
+            class="hover:text-[var(--accent)] transition-colors"
+          >
+            github.com/kjdutaro
+          </a>
+          <a
+            href={profile.social.linkedin}
+            class="hover:text-[var(--accent)] transition-colors"
+          >
+            linkedin.com/in/kjdutaro
+          </a>
+        </div>
       </div>
-    </section>
+
+      <!-- Professional Summary -->
+      <section class="mb-10">
+        <h2 class="font-heading text-xl font-bold mb-4 text-[var(--text-primary)] flex items-center gap-2">
+          <span class="text-[var(--accent)]" aria-hidden="true">&gt;</span>
+          Professional Summary
+        </h2>
+        <p class="text-[var(--text-muted)] leading-relaxed text-sm">
+          {profile.bio[0]}
+        </p>
+      </section>
+
+      <!-- Core Competencies -->
+      <section class="mb-10">
+        <h2 class="font-heading text-xl font-bold mb-4 text-[var(--text-primary)] flex items-center gap-2">
+          <span class="text-[var(--accent)]" aria-hidden="true">&gt;</span>
+          Core Competencies
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="p-4 border-2 border-[var(--border-default)] bg-[var(--bg-surface)]">
+            <h3 class="font-heading font-semibold text-[var(--text-primary)] mb-3 text-sm">
+              Technologies
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {
+                [
+                  ...profile.skills.languages,
+                  ...profile.skills.frameworks,
+                ].map((skill) => (
+                  <span class="font-mono text-xs px-2 py-0.5 bg-[var(--bg-elevated)] text-[var(--accent)] border border-[var(--border-default)]">
+                    {skill}
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+          <div class="p-4 border-2 border-[var(--border-default)] bg-[var(--bg-surface)]">
+            <h3 class="font-heading font-semibold text-[var(--text-primary)] mb-3 text-sm">
+              Tools & Specializations
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {
+                [
+                  ...profile.skills.tools,
+                  ...profile.skills.specializations.slice(0, 4),
+                ].map((skill) => (
+                  <span class="font-mono text-xs px-2 py-0.5 bg-[var(--bg-elevated)] text-[var(--accent)] border border-[var(--border-default)]">
+                    {skill}
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professional Experience -->
+      <section class="mb-10">
+        <h2 class="font-heading text-xl font-bold mb-6 text-[var(--text-primary)] flex items-center gap-2">
+          <span class="text-[var(--accent)]" aria-hidden="true">&gt;</span>
+          Professional Experience
+        </h2>
+        {
+          experiences.map((exp) => (
+            <div class="mb-8 pl-4 border-l-2 border-[var(--accent)]">
+              <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                <h3 class="font-heading text-base font-semibold text-[var(--text-primary)]">
+                  {exp.data.title}
+                </h3>
+                <span class="font-mono text-xs text-[var(--text-muted)]">
+                  {formatDate(exp.data.startDate)} –{" "}
+                  {exp.data.endDate
+                    ? formatDate(exp.data.endDate)
+                    : "Present"}
+                </span>
+              </div>
+              <p class="font-mono text-xs text-[var(--text-muted)] mb-3">
+                {exp.data.company}
+              </p>
+              <p class="text-sm text-[var(--text-muted)] leading-relaxed">
+                {exp.data.description}
+              </p>
+            </div>
+          ))
+        }
+      </section>
+
+      <!-- Certifications -->
+      <section class="mb-10">
+        <h2 class="font-heading text-xl font-bold mb-4 text-[var(--text-primary)] flex items-center gap-2">
+          <span class="text-[var(--accent)]" aria-hidden="true">&gt;</span>
+          Certifications & Credentials
+        </h2>
+        <div class="space-y-3">
+          {
+            certifications.map((cert) => (
+              <div class="border-l-2 border-[var(--accent)] pl-4">
+                <p class="font-heading font-semibold text-[var(--text-primary)] mb-0 text-sm">
+                  {cert.data.title}
+                </p>
+                <p class="font-mono text-xs text-[var(--text-muted)] mb-0">
+                  {cert.data.issuer} &bull; {formatDate(cert.data.date)}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Notable Projects -->
+      {
+        projects.length > 0 && (
+          <section class="mb-10">
+            <h2 class="font-heading text-xl font-bold mb-4 text-[var(--text-primary)] flex items-center gap-2">
+              <span class="text-[var(--accent)]" aria-hidden="true">&gt;</span>
+              Notable Projects
+            </h2>
+            <div class="space-y-4">
+              {projects.map((project) => (
+                <div class="p-4 border-2 border-[var(--border-default)] bg-[var(--bg-surface)] hover:border-[var(--accent)] transition-colors">
+                  <div class="flex items-center gap-2">
+                    <p class="font-heading font-semibold text-[var(--text-primary)] mb-0 text-sm">
+                      {project.data.title}
+                    </p>
+                    {project.data.liveLink && (
+                      <a
+                        href={project.data.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-[var(--accent)] hover:text-[var(--accent-hover)]"
+                      >
+                        <ExternalLink size={14} aria-hidden="true" />
+                      </a>
+                    )}
+                  </div>
+                  <p class="text-sm text-[var(--text-muted)] mb-1">
+                    {project.data.description}
+                  </p>
+                  <p class="font-mono text-xs text-[var(--text-subtle)] mb-0">
+                    Tech: {project.data.tech.join(", ")}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      <!-- Download -->
+      <section
+        class="mt-12 pt-8 border-t-2 border-[var(--border-default)]"
+      >
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/resume.pdf" download class="c-btn c-btn-primary h-11 px-6">
+            <Download size={18} aria-hidden="true" />
+            Download as PDF
+          </a>
+        </div>
+      </section>
+    </div>
   </article>
-  </div>
 </BaseLayout>

@@ -15,17 +15,38 @@ export default {
           ...fontFamily.sans,
         ],
         heading: [
-          'Plus Jakarta Sans Variable',
+          'Pixelify Sans',
+          'Source Sans 3 Variable',
           ...fontFamily.sans,
+        ],
+        pixel: [
+          'Press Start 2P',
+          'Pixelify Sans',
+          ...fontFamily.mono,
+        ],
+        mono: [
+          'ui-monospace',
+          'Cascadia Code',
+          'JetBrains Mono',
+          ...fontFamily.mono,
         ],
       },
       colors: {
-        /* Design system: use var(--accent) in CSS for theme-aware light/dark */
         accent: {
-          DEFAULT: '#0D9488', // Teal (light mode)
-          hover: '#0F766E',
-          muted: '#CCFBF1',
+          DEFAULT: 'var(--accent)',
+          hover: 'var(--accent-hover)',
+          muted: 'var(--accent-muted)',
         },
+        surface: 'var(--bg-surface)',
+        elevated: 'var(--bg-elevated)',
+      },
+      boxShadow: {
+        'pixel': '4px 4px 0 0 var(--accent)',
+        'pixel-sm': '2px 2px 0 0 var(--accent)',
+        'pixel-border': '4px 0 0 0 var(--border-default), -4px 0 0 0 var(--border-default), 0 4px 0 0 var(--border-default), 0 -4px 0 0 var(--border-default)',
+      },
+      animation: {
+        'blink': 'blink-cursor 1s step-end infinite',
       },
     },
   },

@@ -1,0 +1,151 @@
+/**
+ * Centralized profile data — single source of truth for personal information
+ * used across the entire site (hero, meta tags, JSON-LD schema, resume,
+ * contact section, footer, layouts).
+ *
+ * Update this file when your info changes; every page will reflect the update.
+ */
+
+/* ---- Type definitions ---- */
+
+export interface ProfileHighlight {
+  label: string;
+  value: string;
+}
+
+export interface Service {
+  /** Lucide icon component name (must match an import in the consuming component) */
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface Profile {
+  name: string;
+  title: string;
+  tagline: string;
+  bio: string[];
+  location: string;
+  contact: {
+    email: string;
+    phone: string;
+  };
+  social: {
+    github: string;
+    linkedin: string;
+  };
+  siteUrl: string;
+  highlights: ProfileHighlight[];
+  skills: {
+    languages: string[];
+    frameworks: string[];
+    tools: string[];
+    specializations: string[];
+  };
+  services: Service[];
+  /** Technologies listed in the JSON-LD "knowsAbout" field */
+  knowsAbout: string[];
+}
+
+/* ---- Data ---- */
+
+const profile: Profile = {
+  name: "Kristee Joy Dutaro",
+  title: "Frontend / Web Developer",
+  tagline:
+    "I build responsive, performant websites and web apps — from static sites and WordPress themes to modern frameworks like Astro and React.",
+  bio: [
+    "I'm a Frontend / Web Developer focused on building responsive, performant websites and web applications. My work spans from vanilla HTML/CSS/JavaScript to modern frameworks like Astro and React, with an emphasis on clean code and user experience.",
+    "I freelance on custom web development — static sites with Mapbox, WordPress theme customization from Figma, and website maintenance including blog content and multi-language localization for international audiences.",
+    "My primary client is OneJourney Tours, where I handle site development, AI-assisted blog content, and localization across 10+ languages to support organic search.",
+    "I also have experience in project management, QA, database design, and technical documentation, and hold Certiport certifications in Network Security, Java, and Databases.",
+  ],
+  location: "Philippines",
+  contact: {
+    email: "kjdutaro@gmail.com",
+    phone: "+63 956 179 3552",
+  },
+  social: {
+    github: "https://github.com/kjdutaro",
+    linkedin: "https://linkedin.com/in/kjdutaro",
+  },
+  siteUrl: "https://kjdutaro.xyz",
+  highlights: [
+    { label: "Tourism Sites", value: "59+" },
+    { label: "Languages", value: "10+" },
+    { label: "WP Themes", value: "9+" },
+  ],
+  skills: {
+    languages: ["JavaScript", "HTML/CSS", "Python", "Java", "PHP"],
+    frameworks: ["React", "Next.js", "Astro"],
+    tools: [
+      "Git/GitHub",
+      "VS Code",
+      "Cursor IDE",
+      "Figma",
+      "Firebase",
+      "Cloudflare",
+      "Vercel",
+      "Tailwind CSS",
+    ],
+    specializations: [
+      "Static Site Generation",
+      "WordPress Theme Development",
+      "Multi-language Localization",
+      "Blog Content Generation",
+      "Mapbox Integration",
+      "Responsive Design",
+    ],
+  },
+  services: [
+    {
+      icon: "Globe",
+      title: "Web Development",
+      description:
+        "Static sites and dynamic apps with Astro, React, Next.js. Responsive design, performance, and clean code.",
+    },
+    {
+      icon: "Paintbrush",
+      title: "WordPress Themes",
+      description:
+        "Custom themes from Figma. Theme customization, plugin work, and template creation.",
+    },
+    {
+      icon: "Wrench",
+      title: "Maintenance",
+      description:
+        "Updates, security, performance, and ongoing improvement for existing sites.",
+    },
+    {
+      icon: "FileText",
+      title: "Blog & Content",
+      description:
+        "AI-assisted blog content, SEO, and content strategy for organic traffic.",
+    },
+    {
+      icon: "Languages",
+      title: "Localization",
+      description:
+        "Multi-language translation and localization for consistent UX across regions.",
+    },
+    {
+      icon: "MapPin",
+      title: "Mapbox",
+      description:
+        "Interactive maps, tour guides, and location-based features with Mapbox.",
+    },
+  ],
+  knowsAbout: [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Astro",
+    "WordPress",
+    "UI/UX Design",
+    "SEO",
+    "Localization",
+  ],
+};
+
+export default profile;

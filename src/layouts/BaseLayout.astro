@@ -1,170 +1,107 @@
 ---
+/**
+ * BaseLayout — root HTML shell shared by all pages.
+ * Provides <head> metadata, theme init (flash-free), Header and Footer.
+ * All personal data comes from src/data/profile.ts (single source of truth).
+ */
 import "../styles/global.css";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
+import profile from "../data/profile";
 
-const { 
-  title = "Kristee Joy Dutaro – Full-Stack Developer", 
-  description = "Full-stack developer specializing in React, TypeScript, and modern web technologies.",
+const {
+  title = `${profile.name} – ${profile.title}`,
+  description = `${profile.title} specializing in static sites, WordPress theme development, and website maintenance.`,
   ogImage = "/og-image.png",
   canonical = Astro.url.pathname,
-  horizontalScroll = true
 } = Astro.props;
 
-// JSON-LD Schema for Person/Portfolio
+/* JSON-LD structured data for Person / Portfolio */
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Kristee Joy Dutaro",
-  "url": "https://kjdutaro.xyz",
-  "jobTitle": "Web Developer",
-  "email": "kjdutaro@gmail.com",
-  "telephone": "+63 956 179 3552",
-  "sameAs": [
-    "https://github.com/kjdutaro",
-    "https://linkedin.com/in/kjdutaro"
-  ],
-  "knowsAbout": [
-    "TypeScript",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Full-Stack Development",
-    "UI/UX Design",
-    "Machine Learning"
-  ]
+  name: profile.name,
+  url: profile.siteUrl,
+  jobTitle: profile.title,
+  email: profile.contact.email,
+  telephone: profile.contact.phone,
+  sameAs: [profile.social.github, profile.social.linkedin],
+  knowsAbout: profile.knowsAbout,
 };
 ---
 
-<!DOCTYPE html>
-<html lang="en" data-scroll-direction={horizontalScroll ? 'horizontal' : 'vertical'}>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content="web developer, full-stack, React, TypeScript, JavaScript, UI/UX design" />
-        
-        <!-- Canonical URL -->
-        <link rel="canonical" href={new URL(canonical, Astro.site)} />
-        
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={new URL(canonical, Astro.site)} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={new URL(ogImage, Astro.site)} />
-        
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={new URL(canonical, Astro.site)} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
-        
-        <!-- JSON-LD Schema -->
-        <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
-        
-        <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        
-        <!-- View Transitions for smooth navigation -->
-        <ViewTransitions />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="web developer, frontend, React, TypeScript, JavaScript, Astro, WordPress, UI/UX"
+    />
 
-        <!-- Theme init script - prevents flash, must run before first paint -->
-        <script is:inline>
-          (function() {
-            var stored = localStorage.getItem("theme");
-            var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            if (stored === "dark" || (!stored && prefersDark)) {
-              document.documentElement.classList.add("dark");
-            } else {
-              document.documentElement.classList.remove("dark");
-            }
-          })();
-        </script>
-    </head>
+    <!-- Canonical URL -->
+    <link rel="canonical" href={new URL(canonical, Astro.site)} />
 
-    <body class={`bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased transition-colors duration-300 flex flex-col overflow-x-hidden ${horizontalScroll ? "h-screen overflow-y-hidden min-h-0" : "min-h-screen"}`}>
-        <Header />
-        {horizontalScroll ? (
-          <main class="flex-1 overflow-x-auto overflow-y-hidden min-h-0 flex" id="main-scroll" data-scroll-direction="horizontal">
-            <div class="scroll-track flex flex-row flex-nowrap h-full min-h-0 w-max flex-1">
-              <slot />
-            </div>
-          </main>
-        ) : (
-          <main class="flex-1 overflow-y-auto overflow-x-hidden min-h-0" id="main-scroll" data-scroll-direction="vertical">
-            <slot />
-          </main>
-        )}
-        <Footer />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(canonical, Astro.site)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
 
-        <!-- Theme management script -->
-        <script type="module">
-          import '../scripts/theme.ts';
-        </script>
-        <!-- Horizontal layout: vertical wheel scrolls the page horizontally -->
-        {horizontalScroll && (
-          <script is:inline>
-            (function() {
-              var main = document.getElementById('main-scroll');
-              if (!main) return;
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={new URL(canonical, Astro.site)} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
 
-              main.addEventListener('wheel', function (e) {
-                if (e.ctrlKey || e.metaKey) return;
+    <!-- JSON-LD Schema -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(schemaMarkup)}
+    />
 
-                var maxScroll = main.scrollWidth - main.clientWidth;
-                if (maxScroll <= 0) return;
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-                if (e.deltaY !== 0) {
-                  e.preventDefault();
-                  var next = main.scrollLeft + e.deltaY;
-                  if (next < 0) next = 0;
-                  if (next > maxScroll) next = maxScroll;
-                  main.scrollLeft = next;
-                }
-              }, { passive: false });
-            })();
-          </script>
-        )}
-        <!-- Parallax: each section strip moves at a different rate than scroll -->
-        {horizontalScroll && (
-          <script is:inline>
-            (function() {
-              var main = document.getElementById('main-scroll');
-              if (!main) return;
+    <!-- View Transitions for smooth page navigation -->
+    <ViewTransitions />
 
-              var track = main.firstElementChild;
-              if (!track) return;
+    <!--
+      Theme init script — runs before first paint to prevent flash.
+      Reads stored preference or system preference; defaults to light.
+    -->
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var prefersDark =
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (stored === "dark" || (!stored && prefersDark)) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+  </head>
 
-              var raf = null;
-              function updateParallax() {
-                raf = null;
-                var scrollLeft = main.scrollLeft;
-                var sections = track.children;
-                for (var i = 0; i < sections.length; i++) {
-                  var section = sections[i];
-                  var strip = section.querySelector('.parallax-strip');
-                  if (!strip) continue;
-                  var rate = parseFloat(strip.getAttribute('data-parallax-rate')) || 0.12;
-                  var sectionLeft = section.offsetLeft;
-                  var dx = -(scrollLeft - sectionLeft) * rate;
-                  strip.style.transform = 'translateX(' + dx + 'px)';
-                }
-              }
+  <body
+    class="bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 flex flex-col min-h-screen"
+  >
+    <Header />
+    <main class="flex-1" id="main-content">
+      <slot />
+    </main>
+    <Footer />
 
-              function onScroll() {
-                if (raf == null) raf = requestAnimationFrame(updateParallax);
-              }
-
-              main.addEventListener('scroll', onScroll, { passive: true });
-              window.addEventListener('resize', onScroll);
-              updateParallax();
-            })();
-          </script>
-        )}
-    </body>
+    <!-- Theme module — handles view-transition re-sync and system-change listener -->
+    <script type="module">
+      import "../scripts/theme.ts";
+    </script>
+  </body>
 </html>

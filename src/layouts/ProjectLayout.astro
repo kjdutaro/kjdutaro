@@ -1,7 +1,13 @@
 ---
+/**
+ * ProjectLayout — wraps individual project detail pages with pixel design.
+ * Metadata, tech tags, prose content, and action links.
+ */
 import BaseLayout from "./BaseLayout.astro";
 import TourismSiteGrid from "../components/TourismSiteGrid.astro";
+import { Github, ExternalLink } from "@lucide/astro";
 import type { CollectionEntry } from "astro:content";
+import profile from "../data/profile";
 
 interface Props {
   entry: CollectionEntry<"projects">;
@@ -10,144 +16,102 @@ interface Props {
 const { entry } = Astro.props;
 const { title, description, tech, github, liveLink, date } = entry.data;
 
-// JSON-LD Schema for Project
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  "name": title,
-  "description": description,
-  "datePublished": date.toISOString(),
-  "creator": {
+  name: title,
+  description,
+  datePublished: date.toISOString(),
+  creator: {
     "@type": "Person",
-    "name": "Kristee Joy Dutaro"
+    name: profile.name,
   },
-  "keywords": tech.join(", ")
+  keywords: tech.join(", "),
 };
 ---
 
-<BaseLayout 
-  title={`${title} – Kristee Joy Dutaro`}
+<BaseLayout
+  title={`${title} – ${profile.name}`}
   description={description}
   canonical={`/projects/${entry.slug}`}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
-  <div class="min-w-[100vw] w-[100vw] shrink-0 min-h-full pt-20 pb-24 overflow-y-auto">
-  <article class="max-w-3xl mx-auto px-4 md:px-8 py-16">
-    <div class="mb-8">
-      <h1 class="text-4xl font-bold mb-4 text-zinc-100">{title}</h1>
-      <p class="text-zinc-400">{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-    </div>
-
-    {tech.length > 0 && (
-      <div class="flex flex-wrap gap-2 mb-8">
-        {tech.map((t) => (
-          <span class="text-xs bg-zinc-800 text-zinc-300 px-3 py-1 rounded">
-            {t}
-          </span>
-        ))}
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(schemaMarkup)}
+  />
+  <article class="c-section">
+    <div class="c-container max-w-3xl">
+      <!-- Project header -->
+      <div class="mb-8 pb-6 border-b-2 border-[var(--border-default)]">
+        <p class="c-section-eyebrow">Project</p>
+        <h1
+          class="font-heading text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-[var(--text-primary)]"
+        >
+          {title}
+        </h1>
+        <p class="font-mono text-xs text-[var(--text-muted)]">
+          {
+            new Date(date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </p>
       </div>
-    )}
 
-    <div class="prose prose-invert max-w-none mb-8">
-      <slot />
-    </div>
-    
-    {entry.slug === "tourism-sites" && <TourismSiteGrid />}
+      <!-- Tech stack tags -->
+      {
+        tech.length > 0 && (
+          <div class="flex flex-wrap gap-2 mb-8">
+            {tech.map((t) => (
+              <span class="font-mono text-xs bg-[var(--bg-elevated)] text-[var(--accent)] px-2.5 py-0.5 border border-[var(--border-default)]">
+                {t}
+              </span>
+            ))}
+          </div>
+        )
+      }
 
-    <div class="flex gap-4 pt-8 border-t border-zinc-800">
-      {github && (
-        <a 
-          href={github}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
-          </svg>
-          View on GitHub
-        </a>
-      )}
-      {liveLink && (
-        <a 
-          href={liveLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-          </svg>
-          Live Demo
-        </a>
-      )}
+      <!-- Project content -->
+      <div class="prose max-w-none mb-8">
+        <slot />
+      </div>
+
+      <!-- Special grid for tourism-sites project -->
+      {entry.slug === "tourism-sites" && <TourismSiteGrid />}
+
+      <!-- Action links -->
+      <div class="flex gap-3 pt-8 border-t-2 border-[var(--border-default)]">
+        {
+          github && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="c-btn c-btn-ghost text-xs h-9 px-4"
+              aria-label={`View ${title} on GitHub`}
+            >
+              <Github size={16} aria-hidden="true" />
+              View on GitHub
+            </a>
+          )
+        }
+        {
+          liveLink && (
+            <a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="c-btn c-btn-secondary text-xs h-9 px-4"
+              aria-label={`View ${title} live demo`}
+            >
+              <ExternalLink size={16} aria-hidden="true" />
+              Live Demo
+            </a>
+          )
+        }
+      </div>
     </div>
   </article>
-  </div>
 </BaseLayout>
-
-<style is:global>
-  .prose {
-    --prose-body: rgb(212, 212, 216);
-    --prose-headings: rgb(244, 244, 245);
-    --prose-links: rgb(212, 212, 216);
-    --prose-bold: rgb(244, 244, 245);
-    --prose-borders: rgb(39, 39, 42);
-    --prose-bg-muted: rgb(24, 24, 27);
-  }
-
-  .prose h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: rgb(244, 244, 245);
-  }
-
-  .prose h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: rgb(244, 244, 245);
-  }
-
-  .prose p {
-    margin-bottom: 1rem;
-    line-height: 1.625;
-  }
-
-  .prose ul, .prose ol {
-    margin-bottom: 1rem;
-    margin-left: 1.5rem;
-  }
-
-  .prose li {
-    margin-bottom: 0.5rem;
-  }
-
-  .prose code {
-    background-color: rgb(24, 24, 27);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
-    color: rgb(212, 212, 216);
-  }
-
-  .prose pre {
-    background-color: rgb(24, 24, 27);
-    padding: 1rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin-bottom: 1rem;
-  }
-
-  .prose a {
-    color: rgb(161, 161, 170);
-    text-decoration: underline;
-  }
-
-  .prose a:hover {
-    color: rgb(244, 244, 245);
-  }
-</style>
