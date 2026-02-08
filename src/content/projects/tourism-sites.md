@@ -1,6 +1,6 @@
 ---
 title: Tourism Sites Portfolio
-description: A comprehensive portfolio of 59+ vanilla HTML/CSS/JavaScript tourism and attraction guide websites across 20+ countries. International tourism websites and global attraction guides with interactive Mapbox integration, responsive design, technical SEO optimization, and detailed location information with ticketing integrations.
+description: 59+ vanilla HTML/CSS/JavaScript tourism and attraction guide websites across 20+ countries. I help with development, maintenance, and deployment under my client, who mainly maintains these sites.
 date: 2025-01-10
 featured: true
 category: client
@@ -8,7 +8,7 @@ tech: ["HTML5", "CSS3", "JavaScript", "Mapbox GL JS", "Responsive Design", "Tech
 liveLink: https://louvremuseumtour.com/
 ---
 
-A comprehensive portfolio of static tourism websites built with vanilla HTML, CSS, and JavaScript. Each site features detailed destination information with interactive Mapbox maps, ticketing redirects, and is optimized for search engines to attract organic traffic for tour operators and attractions worldwide.
+A portfolio of static tourism websites built with vanilla HTML, CSS, and JavaScript. These sites are maintained by my client; I help with building, developing, maintaining, and deploying them. Each site features detailed destination information with interactive Mapbox maps, ticketing redirects, and is optimized for search engines. My client is mainly the one maintaining all these sites; I support with dev work as needed.
 
 ## All 59+ Live Sites
 

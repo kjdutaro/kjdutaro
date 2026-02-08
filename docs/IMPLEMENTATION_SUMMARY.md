@@ -15,7 +15,7 @@ Successfully rebuilt and enhanced your Astro portfolio with professional content
 
 ### 2. **Project Content** ✓
 12 project markdown files with descriptions, tech stacks, categories, and links:
-- **OneJourney Tours**, **WordPress Custom Themes**, **Tourism Sites Portfolio**, **WordPress Theme Conversion** (client)
+- **OneJourney Tours**, **WordPress Themes**, **Tourism Sites Portfolio** (client)
 - **M&S Inventory Management**, **Suru App**, **Timesheets Management System** (personal)
 - **Assembly Project**, **Exponential LSTM** (academic)
 - **DigiPay**, **FixDVO**, **Foodies Recipe App** (design prototypes – Figma)
@@ -84,7 +84,6 @@ src/content/
     ├── onejourney-tours.md
     ├── wordpress-custom-themes.md
     ├── tourism-sites.md
-    ├── wordpress-theme.md
     ├── ms-inventory.md
     ├── suru-app.md
     ├── timesheets-management.md

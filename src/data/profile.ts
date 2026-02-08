@@ -57,7 +57,7 @@ const profile: Profile = {
   bio: [
     "I'm a Frontend / Web Developer focused on building responsive, performant websites and web applications. My work spans from vanilla HTML/CSS/JavaScript to modern frameworks like Astro and React, with an emphasis on clean code and user experience.",
     "I freelance on custom web development — static sites with Mapbox, WordPress theme customization from Figma, and website maintenance including blog content and multi-language localization for international audiences.",
-    "My primary client is OneJourney Tours, where I handle site development, AI-assisted blog content, and localization across 10+ languages to support organic search.",
+    "I work with a client who gives me dev work on multiple web properties: building and developing sites, maintaining and deploying them, and adding features. They mainly maintain these sites; I help. That work includes OneJourney Tours, 59+ tourism sites, and 9+ WordPress themes—site development, AI-assisted blog content, multi-language localization, and more.",
     "I also have experience in project management, QA, database design, and technical documentation, and hold Certiport certifications in Network Security, Java, and Databases.",
   ],
   location: "Philippines (Remote / Worldwide)",

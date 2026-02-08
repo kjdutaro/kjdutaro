@@ -1,12 +1,14 @@
 ---
-title: WordPress Custom Themes
-description: A portfolio of 9+ WordPress themes customized and refined from various sources and Figma designs. Covers travel, technology, services, and entertainment industries with comprehensive field customization using Advanced Custom Fields (ACF).
+title: WordPress Themes
+description: WordPress theme work under my client: converting HTML/CSS to themes, and customizing 9+ themes from Figma and other sources. I help with development, maintenance, and deployment; my client mainly maintains the sites.
 date: 2025-01-05
 featured: true
 category: client
 tech:
   - WordPress
   - PHP
+  - HTML5
+  - CSS3
   - Advanced Custom Fields (ACF)
   - Figma Design
   - Responsive Design
@@ -14,7 +16,7 @@ tech:
 liveLink: https://bookingheads.com/
 ---
 
-A portfolio of 9+ WordPress themes customized and refined for various clients. Each theme was either adapted from existing designs or built from Figma mockups, with comprehensive customization using Advanced Custom Fields (ACF) for flexible content management.
+WordPress theme work I did under my client: converting HTML/CSS templates into production-ready themes, and customizing 9+ themes for sites they maintain. I helped with building, customizing, maintenance, and deployment; my client is mainly the one maintaining these sites. Themes are adapted from existing designs or built from Figma mockups, with Advanced Custom Fields (ACF) and full WordPress integration (custom post types, theme options, plugin compatibility).
 
 ## Customized Themes Portfolio
 
@@ -28,8 +30,9 @@ A portfolio of 9+ WordPress themes customized and refined for various clients. E
 - **[Inbox Signature](https://inboxsignature.com/)** - Communication/email services theme
 - **[A11Y Widget](https://a11ywidget.com/)** - Accessibility tools theme
 
-## Customization & Development
+## Theme Conversion & Customization
 
+- Converting HTML/CSS templates into production-ready WordPress themes (custom post types, theme options, widget areas)
 - Theme selection and adaptation for client needs
 - Custom field setup using Advanced Custom Fields (ACF)
 - Plugin integration and customization

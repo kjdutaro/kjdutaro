@@ -20,9 +20,8 @@
 
 ### Projects (12/12 with category labels)
 - [x] OneJourney Tours (client)
-- [x] WordPress Custom Themes (client)
+- [x] WordPress Themes (client; theme conversion + custom themes)
 - [x] Tourism Sites Portfolio (client)
-- [x] WordPress Theme Conversion (client)
 - [x] M&S Inventory Management (personal)
 - [x] Suru App (personal)
 - [x] Timesheets Management System (personal)

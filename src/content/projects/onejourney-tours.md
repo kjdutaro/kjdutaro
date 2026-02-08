@@ -1,6 +1,6 @@
 ---
 title: OneJourney Tours
-description: Primary ongoing client web application featuring website maintenance, blog content generation, multi-language localization, and SEO optimization. Hosted on Firebase with continuous feature development.
+description: Web application I help develop and maintain through my client. Work includes feature updates, blog content generation, multi-language localization, and SEO optimization. Hosted on Firebase.
 date: 2025-01-15
 featured: true
 category: client
@@ -8,17 +8,16 @@ tech: ["HTML5", "CSS3", "JavaScript", "Firebase", "SEO", "Localization", "Conten
 liveLink: https://onejourneytours.com/
 ---
 
-OneJourney Tours is my primary ongoing client project. As the main web developer, I handle website development and maintenance, blog content generation with AI assistance, multi-language localizations across 10+ languages, and continuous SEO optimization to drive organic traffic and attract international travelers.
+OneJourney Tours is a site maintained by my client; I do development work under them. I help with website updates and feature implementation, blog content generation with AI assistance, multi-language localization across languages, and SEO optimization. My client is primarily responsible for maintaining the site; I support with building, changes, and deployment as needed.
 
-## Key Responsibilities
+## What I Help With
 
 - Web application development and feature implementation
-- Regular website updates and feature additions
+- Website updates and feature additions
 - Blog post creation and publishing with AI assistance
 - Multi-language content translation and localization (10+ languages)
 - SEO optimization for global search visibility
-- Performance monitoring and Firebase optimization
-- Security and maintenance management
+- Performance and Firebase optimization when requested
 
 ## Technologies Used
 
