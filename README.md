@@ -1,43 +1,51 @@
-# Astro Starter Kit: Minimal
+# Kristee Joy Dutaro
 
-```sh
-npm create astro@latest -- --template minimal
-```
+**Frontend / Web Developer** — Philippines (Remote / Worldwide)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+I build responsive, performant websites and web apps for clients worldwide — from tourism sites and WordPress themes to modern frameworks like Astro and React.
 
-## 🚀 Project Structure
+[![Portfolio](https://img.shields.io/badge/Portfolio-kjdutaro.github.io-22d3ee?style=flat-square)](https://kjdutaro.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-kjdutaro-0a66c2?style=flat-square&logo=linkedin)](https://linkedin.com/in/kjdutaro)
+[![Email](https://img.shields.io/badge/Email-kjdutaro%40gmail.com-ea4335?style=flat-square&logo=gmail)](mailto:kjdutaro@gmail.com)
 
-Inside of your Astro project, you'll see the following folders and files:
+---
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## About
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+I'm a freelance Frontend / Web Developer focused on building responsive, performant websites and web applications. My work spans from vanilla HTML/CSS/JavaScript to modern frameworks like Astro and React, with an emphasis on clean code and user experience.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+I freelance on custom web development — static sites with Mapbox, WordPress theme customization from Figma, and website maintenance including blog content and multi-language localization for international audiences.
 
-Any static assets, like images, can be placed in the `public/` directory.
+I also have experience in project management, QA, database design, and technical documentation.
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+## Tech Stack
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+**Languages:** JavaScript, HTML/CSS, Python, Java, PHP
 
-## 👀 Want to learn more?
+**Frameworks:** React, Next.js, Astro
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Tools:** Git/GitHub, VS Code, Cursor IDE, Figma, Firebase, Cloudflare, Vercel, Tailwind CSS
+
+**Specializations:** Static Site Generation, WordPress Theme Development, Multi-language Localization, Mapbox Integration, Responsive Design
+
+---
+
+## What I Do
+
+- **Web Development** — Static sites and dynamic apps with Astro, React, Next.js
+- **WordPress Themes** — Custom themes from Figma, theme customization, plugin work
+- **Maintenance** — Updates, security, performance, and ongoing improvement
+- **Localization** — Multi-language translation for consistent UX across regions
+- **Mapbox** — Interactive maps, tour guides, and location-based features
+
+
+---
+
+## Certifications
+
+- **IT Specialist — Network Security** · Certiport (Pearson VUE) · [Credly](https://www.credly.com/badges/ce096dcf-6322-43fe-ade2-3131a06a3eba)
+- **IT Specialist — Databases** · Certiport (Pearson VUE) · [Credly](https://www.credly.com/badges/8679e4d3-2df0-4358-bf66-65eda586233b)
+- **IT Specialist — Java** · Certiport (Pearson VUE) · [Credly](https://www.credly.com/badges/24bce751-aa74-49bb-9a7d-f345503c5294)
+
