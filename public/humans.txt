@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: Kristee Joy Dutaro
+Site: https://kjorken.xyz
+Location: Davao City, Philippines
+
+/* SITE */
+Last update: 2025
+Standards: HTML5, CSS3, JavaScript
+Components: React, Astro, Tailwind CSS
+Software: VS Code, Cursor IDE, Figma

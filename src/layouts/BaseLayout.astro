@@ -12,29 +12,32 @@ import profile from "../data/profile";
 
 const {
   title = `${profile.name} – ${profile.title}`,
-  description = `${profile.title} specializing in static sites, WordPress theme development, and website maintenance.`,
+  description = `Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, improved performance by 20%, developed 6 Chrome extensions.`,
   keywords,
-  ogImage = "/logo.svg",
+  ogImage = "/img/cover.jpg",
   canonical = Astro.url.pathname,
 } = Astro.props;
 
 const defaultKeywords =
-  "freelance web developer, remote frontend developer, WordPress theme developer, tourism website developer, React developer, Astro developer, web developer Philippines, international web development";
+  "Kristee Joy Dutaro, frontend developer, React developer, JavaScript developer, Chrome extension developer, touring microsites, map API integration, remote developer Philippines";
 const metaKeywords = keywords ?? defaultKeywords;
 
-/* JSON-LD structured data for Person / Portfolio — location + international service area */
+/* JSON-LD structured data for Person / Portfolio — Enhanced for SEO */
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
   url: profile.siteUrl,
+  image: new URL(ogImage, Astro.site).toString(),
   jobTitle: profile.title,
+  description: description,
   email: profile.contact.email,
   telephone: profile.contact.phone,
   sameAs: [profile.social.github, profile.social.linkedin],
   knowsAbout: profile.knowsAbout,
   address: {
     "@type": "PostalAddress",
+    addressLocality: "Davao City",
     addressCountry: "PH",
   },
   areaServed: {
@@ -45,6 +48,27 @@ const schemaMarkup = {
     "@type": "Place",
     name: "Remote",
   },
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "University of Mindanao",
+  },
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "IT Specialist - Network Security",
+      credentialCategory: "certificate",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "IT Specialist - Database",
+      credentialCategory: "certificate",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "IT Specialist - Java",
+      credentialCategory: "certificate",
+    },
+  ],
 };
 ---
 
@@ -56,7 +80,13 @@ const schemaMarkup = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={metaKeywords} />
-
+    <meta name="author" content={profile.name} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Performance: DNS prefetch for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    
     <!-- Geo + international audience -->
     <meta name="geo.region" content="PH" />
     <meta name="geo.placename" content="Philippines" />
@@ -67,17 +97,24 @@ const schemaMarkup = {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={profile.name} />
     <meta property="og:url" content={new URL(canonical, Astro.site)} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:alt" content={`${profile.name} - ${profile.title}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={new URL(canonical, Astro.site)} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kjorken" />
+    <meta name="twitter:creator" content="@kjorken" />
+    <meta name="twitter:url" content={new URL(canonical, Astro.site)} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:image:alt" content={`${profile.name} - ${profile.title}`} />
 
     <!-- JSON-LD Schema -->
     <script
@@ -87,6 +124,10 @@ const schemaMarkup = {
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Humans.txt & LLMs.txt -->
+    <link rel="author" href="/humans.txt" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site info" />
 
     <!-- View Transitions for smooth page navigation -->
     <ClientRouter />

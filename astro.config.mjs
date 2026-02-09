@@ -4,9 +4,8 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
-// GitHub Pages: site at https://kjorken.github.io
 export default defineConfig({
-  site: "https://kjorken.github.io",
+  site: "https://kjorken.xyz",
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

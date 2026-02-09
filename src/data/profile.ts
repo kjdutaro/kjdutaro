@@ -53,9 +53,9 @@ const profile: Profile = {
   name: "Kristee Joy Dutaro",
   title: "Frontend / Web Developer",
   tagline:
-    "I build responsive, performant websites and web apps for clients worldwide — from tourism sites and WordPress themes to modern frameworks like Astro and React.",
+    "I build responsive, performant websites and web apps for clients worldwide — specializing in touring microsites with map integration, Chrome extensions, and modern frameworks like React and Astro.",
   bio: [
-    "Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ touring microsites with integrated map APIs, improving load times by ~20% through performance optimization and SEO best practices. Developed 6 Chrome extensions and converted 5+ static templates into custom WordPress themes. Expertise in full-stack development, responsive design, and delivering maintainable, user-focused web applications using HTML, CSS, JavaScript, React.js, and Next.js.",
+    "Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ touring microsites with integrated map APIs, improving load times by ~20% and search visibility through performance optimization. Developed 6 Chrome extensions using JavaScript and Chrome Extensions API. Expertise in responsive design and delivering maintainable web applications using HTML, CSS, React.js, and Next.js.",
   ],
   location: "Philippines (Remote)",
   contact: {
@@ -73,7 +73,7 @@ const profile: Profile = {
     { label: "WP Themes", value: "9+" },
   ],
   skills: {
-    languages: ["JavaScript", "HTML/CSS", "Python", "Java", "PHP"],
+    languages: ["JavaScript", "HTML/CSS", "Python", "Java", "PHP", "TypeScript"],
     frameworks: ["React", "Next.js", "Astro"],
     tools: [
       "Git/GitHub",
