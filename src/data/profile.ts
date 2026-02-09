@@ -55,18 +55,15 @@ const profile: Profile = {
   tagline:
     "I build responsive, performant websites and web apps for clients worldwide — from tourism sites and WordPress themes to modern frameworks like Astro and React.",
   bio: [
-    "I'm a Frontend / Web Developer focused on building responsive, performant websites and web applications. My work spans from vanilla HTML/CSS/JavaScript to modern frameworks like Astro and React, with an emphasis on clean code and user experience.",
-    "I freelance on custom web development — static sites with Mapbox, WordPress theme customization from Figma, and website maintenance including blog content and multi-language localization for international audiences.",
-    "I work with a client who gives me dev work on multiple web properties: building and developing sites, maintaining and deploying them, and adding features. They mainly maintain these sites; I help. That work includes OneJourney Tours, 59+ tourism sites, and 9+ WordPress themes—site development, AI-assisted blog content, multi-language localization, and more.",
-    "I also have experience in project management, QA, database design, and technical documentation, and hold Certiport certifications in Network Security, Java, and Databases.",
+    "Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ touring microsites with integrated map APIs, improving load times by ~20% through performance optimization and SEO best practices. Developed 6 Chrome extensions and converted 5+ static templates into custom WordPress themes. Expertise in full-stack development, responsive design, and delivering maintainable, user-focused web applications using HTML, CSS, JavaScript, React.js, and Next.js.",
   ],
-  location: "Philippines (Remote / Worldwide)",
+  location: "Philippines (Remote)",
   contact: {
     email: "kjdutaro@gmail.com",
     phone: "+63 956 179 3552",
   },
   social: {
-    github: "https://github.com/kjorken",
+    github: "https://github.com/kjdutaro",
     linkedin: "https://linkedin.com/in/kjdutaro",
   },
   siteUrl: "https://kjorken.xyz",
