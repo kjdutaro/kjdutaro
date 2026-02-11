@@ -1,4 +1,6 @@
-# KJ Dutaro (Kristee Joy Dutaro) - Portfolio Documentation
+# KJ Dutaro Portfolio Documentation
+
+> KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire.
 
 > KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies.
 > Built 30+ touring microsites with map APIs, 6 Chrome extensions.

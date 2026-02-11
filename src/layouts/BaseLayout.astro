@@ -27,8 +27,8 @@ const schemaMarkup = [
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: profile.name,
-    alternateName: profile.fullName,
+    name: profile.fullName,
+    alternateName: profile.name,
     url: profile.siteUrl,
     image: new URL(ogImage, Astro.site).toString(),
     jobTitle: profile.title,
@@ -121,7 +121,7 @@ const schemaMarkup = [
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={metaKeywords} />
-    <meta name="author" content={profile.name} />
+    <meta name="author" content={profile.fullName} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
     <meta name="bingbot" content="index, follow" />
@@ -130,6 +130,11 @@ const schemaMarkup = [
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
     <meta name="rating" content="general" />
+    
+    <!-- Brand name reinforcement -->
+    <meta name="application-name" content={profile.name} />
+    <meta name="apple-mobile-web-app-title" content={profile.name} />
+    <meta name="msapplication-TileColor" content="#0a0a0b" />
     
     <!-- Performance: DNS prefetch for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -144,14 +149,19 @@ const schemaMarkup = [
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:site_name" content={profile.fullName} />
     <meta property="og:url" content={new URL(canonical, Astro.site)} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
-    <meta property="og:image:alt" content={`${profile.name} - ${profile.title}`} />
+    <meta property="og:image:alt" content={`${profile.fullName} - ${profile.title}`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    
+    <!-- Search engine brand reinforcement -->
+    <meta name="site_name" content={profile.name} />
+    <meta name="page-topic" content="Personal Portfolio, Web Development" />
+    <meta property="og:locale:alternative" content="en_PH" />
 
     <!-- JSON-LD Schema -->
     <script

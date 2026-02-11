@@ -1,8 +1,8 @@
 /* TEAM */
-Developer: KJ Dutaro (Kristee Joy Dutaro)
+Developer: KJ Dutaro
 Site: https://kjorken.xyz
 Location: Davao City, Philippines
-/* Contact information and full details available on website */
+/* Full details and contact information available on website */
 
 /* SITE */
 Last update: 2026
