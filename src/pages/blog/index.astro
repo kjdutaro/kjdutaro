@@ -15,10 +15,10 @@ const sorted = published.sort(
 ---
 
 <BaseLayout
-  title={`Blog – ${profile.name} | Web Development & React Tutorials`}
-  description="Web development blog featuring React tutorials, Chrome extension development, map API integration, and JavaScript best practices. Coming soon."
+  title={profile.seo.pages.blog.title}
+  description={profile.seo.pages.blog.description}
   canonical="/blog"
-  keywords="Kristee Joy Dutaro blog, web development tutorials, React tutorials, Chrome extension development, JavaScript best practices, map API guides"
+  keywords={profile.seo.pages.blog.keywords}
 >
   <section class="c-section">
     <div class="c-container">

@@ -11,10 +11,10 @@ import { ClientRouter } from "astro:transitions";
 import profile from "../data/profile";
 
 const {
-  title = `${profile.name} – ${profile.title}`,
-  description = `Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, improved performance by 20%, developed 6 Chrome extensions.`,
-  keywords,
-  ogImage = "/img/cover.jpg",
+  title,
+  description = profile.seo.defaultDescription,
+  keywords = profile.seo.defaultKeywords,
+  ogImage = profile.seo.defaultOgImage,
   canonical = Astro.url.pathname,
 } = Astro.props;
 
@@ -22,54 +22,95 @@ const defaultKeywords =
   "Kristee Joy Dutaro, frontend developer, React developer, JavaScript developer, Chrome extension developer, touring microsites, map API integration, remote developer Philippines";
 const metaKeywords = keywords ?? defaultKeywords;
 
-/* JSON-LD structured data for Person / Portfolio — Enhanced for SEO */
-const schemaMarkup = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: profile.name,
-  url: profile.siteUrl,
-  image: new URL(ogImage, Astro.site).toString(),
-  jobTitle: profile.title,
-  description: description,
-  email: profile.contact.email,
-  telephone: profile.contact.phone,
-  sameAs: [profile.social.github, profile.social.linkedin],
-  knowsAbout: profile.knowsAbout,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Davao City",
-    addressCountry: "PH",
-  },
-  areaServed: {
-    "@type": "Place",
-    name: "Worldwide",
-  },
-  workLocation: {
-    "@type": "Place",
-    name: "Remote",
-  },
-  alumniOf: {
-    "@type": "EducationalOrganization",
-    name: "University of Mindanao",
-  },
-  hasCredential: [
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "IT Specialist - Network Security",
-      credentialCategory: "certificate",
+/* JSON-LD structured data for Person / Website / Professional Service — Enhanced for SEO */
+const schemaMarkup = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    alternateName: profile.fullName,
+    url: profile.siteUrl,
+    image: new URL(ogImage, Astro.site).toString(),
+    jobTitle: profile.title,
+    description: description,
+    email: profile.contact.email,
+    telephone: profile.contact.phone,
+    sameAs: [profile.social.github, profile.social.linkedin],
+    knowsAbout: profile.knowsAbout,
+    address: {
+      "@type": "PostalAddress",
+      ...profile.structuredData.person.address,
     },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "IT Specialist - Database",
-      credentialCategory: "certificate",
+    areaServed: {
+      "@type": "Place",
+      name: "Worldwide",
     },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "IT Specialist - Java",
-      credentialCategory: "certificate",
+    workLocation: {
+      "@type": "Place",
+      name: "Remote",
     },
-  ],
-};
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      ...profile.structuredData.person.alumniOf,
+    },
+    hasCredential: profile.structuredData.person.hasCredential.map((cred: { name: string; credentialCategory: string }) => ({
+      "@type": "EducationalOccupationalCredential",
+      ...cred,
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${profile.name}`,
+    alternateName: `${profile.fullName} Portfolio`,
+    url: profile.siteUrl,
+    description: description,
+    inLanguage: "en-US",
+    isPartOf: {
+      "@type": "WebSite",
+      name: profile.siteUrl,
+      url: profile.siteUrl,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${profile.siteUrl}/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: `${profile.name} - Web Development Services`,
+    alternateName: `${profile.fullName} Web Development`,
+    url: profile.siteUrl,
+    description: "Frontend / Web Development services specializing in React, JavaScript, touring microsites, Chrome extensions, and modern web technologies.",
+    areaServed: "Worldwide",
+    availableLanguage: ["English"],
+    serviceType: [
+      "Web Development",
+      "Frontend Development",
+      "WordPress Theme Development",
+      "Chrome Extension Development",
+      "Website Maintenance",
+      "Localization Services",
+    ],
+    provider: {
+      "@type": "Person",
+      name: profile.name,
+      alternateName: profile.fullName,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: profile.contact.email,
+      telephone: profile.contact.phone,
+      availableLanguage: ["English"],
+      contactType: "professional services",
+    },
+  },
+];
 ---
 
 <!doctype html>
@@ -83,6 +124,12 @@ const schemaMarkup = {
     <meta name="author" content={profile.name} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    
+    <!-- Language and revisit settings -->
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="rating" content="general" />
     
     <!-- Performance: DNS prefetch for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -95,7 +142,7 @@ const schemaMarkup = {
     <!-- Canonical URL -->
     <link rel="canonical" href={new URL(canonical, Astro.site)} />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={profile.name} />
     <meta property="og:url" content={new URL(canonical, Astro.site)} />
@@ -106,24 +153,30 @@ const schemaMarkup = {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@kjorken" />
-    <meta name="twitter:creator" content="@kjorken" />
-    <meta name="twitter:url" content={new URL(canonical, Astro.site)} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
-    <meta name="twitter:image:alt" content={`${profile.name} - ${profile.title}`} />
-
     <!-- JSON-LD Schema -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(schemaMarkup)}
     />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Comprehensive Favicon -->
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/icon48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/icons/icon64.png" />
+    <link rel="icon" type="image/png" sizes="128x128" href="/icons/icon128.png" />
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    
+    <!-- Android Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-chrome.png" />
+    <meta name="theme-color" content="#0a0a0b" />
+    
+    <!-- Microsoft Tile -->
+    <meta name="msapplication-TileColor" content="#0a0a0b" />
+    <meta name="msapplication-TileImage" content="/icons/icon144.png" />
     
     <!-- Humans.txt & LLMs.txt -->
     <link rel="author" href="/humans.txt" />

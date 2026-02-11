@@ -1,5 +1,19 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
 
+# Block unnecessary directories
+Disallow: /api/
+Disallow: /.well-known/
+Disallow: /admin/
+Disallow: /_astro/
+
+# Allow important asset directories
+Allow: /icons/
+Allow: /img/
+Allow: /css/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://kjorken.xyz/sitemap-index.xml

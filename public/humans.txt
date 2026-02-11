@@ -1,10 +1,15 @@
 /* TEAM */
-Developer: Kristee Joy Dutaro
+Developer: KJ Dutaro (Kristee Joy Dutaro)
 Site: https://kjorken.xyz
 Location: Davao City, Philippines
+/* Contact information and full details available on website */
 
 /* SITE */
-Last update: 2025
-Standards: HTML5, CSS3, JavaScript
+Last update: 2026
+Standards: HTML5, CSS3, JavaScript, TypeScript
 Components: React, Astro, Tailwind CSS
 Software: VS Code, Cursor IDE, Figma
+/* Complete technical skills and specializations available in profile data */
+
+/* THANKS */
+Built with Astro, deployed with modern web standards.

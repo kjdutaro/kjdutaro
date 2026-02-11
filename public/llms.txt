@@ -1,6 +1,6 @@
-# Kristee Joy Dutaro - Frontend / Web Developer Portfolio
+# KJ Dutaro (Kristee Joy Dutaro) - Portfolio Documentation
 
-> Frontend / Web Developer specializing in React, JavaScript, and modern web technologies.
+> KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies.
 > Built 30+ touring microsites with map APIs, 6 Chrome extensions.
 > Remote developer based in Philippines available for hire.
 
@@ -10,9 +10,12 @@ Kristee Joy Dutaro is a Frontend / Web Developer specializing in JavaScript, Rea
 
 ## Technical Skills
 
-**Programming**: JavaScript, TypeScript, PHP, Python
-**Web & Platforms**: HTML, CSS, TailwindCSS, React.js, Next.js, WordPress, Chrome Extensions API, Bubble.io
-**Tools & Practices**: Git, GitHub, Figma, Agile/Scrum, SEO Optimization, Cursor, Astro
+Technical skills are structured in the main profile data:
+- Languages: JavaScript, Python, Java, PHP, TypeScript  
+- Frameworks: React, Next.js, Astro
+- Tools: Git/GitHub, VS Code, Cursor IDE, Figma, Firebase, Cloudflare, Vercel, Tailwind CSS
+- Specializations: Static Site Generation, WordPress Theme Development, Multi-language Localization, Blog Content Generation, Mapbox Integration, Responsive Design
+- See profile data for complete skill breakdown
 
 ## Key Projects
 
@@ -42,12 +45,9 @@ Graduated: August 2025
 
 ## Contact
 
-- **Email**: kjdutaro@gmail.com
-- **Phone**: +63 956 179 3552
-- **Location**: Davao City, Philippines (Remote)
-- **Website**: https://kjorken.xyz
-- **GitHub**: https://github.com/kjdutaro
-- **LinkedIn**: https://linkedin.com/in/kjdutaro
+Contact information is available on the main website:
+- Email, phone, social links, and professional details
+- See https://kjorken.xyz for complete contact information
 
 ## Site Structure
 
@@ -57,15 +57,16 @@ Graduated: August 2025
 - `/blog` - Web development blog (coming soon)
 - `/Resume.pdf` - Downloadable resume in PDF format
 
-## Specializations
+## Services
 
-- Touring microsites with map API integration
-- Chrome extension development
-- React and modern JavaScript frameworks
-- Performance optimization and SEO
-- Responsive web design
-- WordPress theme development
-- Multi-language localization
+Web development services are defined in profile data:
+- Web Development: Static sites and dynamic apps with Astro, React, Next.js
+- WordPress Themes: Custom themes from Figma, theme customization, plugin work
+- Maintenance: Updates, security, performance, ongoing improvement
+- Blog & Content: AI-assisted blog content, SEO, content strategy
+- Localization: Multi-language translation and localization
+- Mapbox: Interactive maps, tour guides, location-based features
+- See profile.services for complete service descriptions
 
 ## Technologies Used on This Site
 
@@ -84,4 +85,5 @@ Specializing in frontend development, React applications, Chrome extensions, and
 ---
 
 Last updated: February 2026
-Site built with: Astro, React, Tailwind CSS
+Built with: Astro, React, TypeScript, Tailwind CSS
+Architecture: Static Site Generation, Content Collections

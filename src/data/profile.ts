@@ -22,9 +22,18 @@ export interface Service {
 
 export interface Profile {
   name: string;
+  /** Full legal name for formal contexts */
+  fullName: string;
   title: string;
   tagline: string;
-  bio: string[];
+  bio: {
+    /** Short bio for social media/meta descriptions */
+    short: string;
+    /** Full bio for about/resume sections */
+    full: string[];
+    /** SEO-optimized description for search engines */
+    seo: string;
+  };
   location: string;
   contact: {
     email: string;
@@ -43,20 +52,82 @@ export interface Profile {
     specializations: string[];
   };
   services: Service[];
-  /** Technologies listed in the JSON-LD "knowsAbout" field */
+  /** Technologies listed in JSON-LD "knowsAbout" field */
   knowsAbout: string[];
+  /** Structured data for SEO */
+  structuredData: {
+    person: {
+      address: {
+        addressLocality: string;
+        addressCountry: string;
+      };
+      alumniOf: {
+        name: string;
+      };
+      hasCredential: Array<{
+        name: string;
+        credentialCategory: string;
+      }>;
+    };
+  };
+  /** SEO configuration for different page types */
+  seo: {
+    /** Default SEO meta description */
+    defaultDescription: string;
+    /** Default keywords */
+    defaultKeywords: string;
+    /** Default Open Graph image */
+    defaultOgImage: string;
+    /** Page-specific SEO configurations */
+    pages: {
+      home: {
+        title: string;
+        description: string;
+        keywords: string;
+      };
+      projects: {
+        title: string;
+        description: string;
+        keywords: string;
+      };
+      blog: {
+        title: string;
+        description: string;
+        keywords: string;
+      };
+      resume: {
+        title: string;
+        description: string;
+        keywords: string;
+      };
+    };
+  };
+  /** Computed statistics */
+  stats: {
+    totalProjects: number;
+    totalLanguages: number;
+    totalFrameworks: number;
+    totalTools: number;
+    totalCertifications: number;
+    yearsExperience: number;
+  };
 }
 
 /* ---- Data ---- */
 
 const profile: Profile = {
-  name: "Kristee Joy Dutaro",
+  name: "KJ Dutaro",
+  fullName: "Kristee Joy Dutaro",
   title: "Frontend / Web Developer",
   tagline:
-    "I build responsive, performant websites and web apps for clients worldwide — specializing in touring microsites with map integration, Chrome extensions, and modern frameworks like React and Astro.",
-  bio: [
-    "Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ touring microsites with integrated map APIs, improving load times by ~20% and search visibility through performance optimization. Developed 6 Chrome extensions using JavaScript and Chrome Extensions API. Expertise in responsive design and delivering maintainable web applications using HTML, CSS, React.js, and Next.js.",
-  ],
+    "I build responsive, performant websites and web apps for clients worldwide — specializing in map integration, Chrome extensions, and modern frameworks like React and Astro.",
+  bio: {
+    short: "Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ websites with map APIs, 6 Chrome extensions.",
+    full: [
+      "Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ websites with integrated map APIs, improving load times by ~20% and search visibility through performance optimization. Developed 6 Chrome extensions using JavaScript and Chrome Extensions API. Expertise in responsive design and delivering maintainable web applications using HTML, CSS, React.js, and Next.js.",
+    ],
+    seo: "KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ websites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire.",
+  },
   location: "Philippines (Remote)",
   contact: {
     email: "kjdutaro@gmail.com",
@@ -67,13 +138,8 @@ const profile: Profile = {
     linkedin: "https://linkedin.com/in/kjdutaro",
   },
   siteUrl: "https://kjorken.xyz",
-  highlights: [
-    { label: "Tourism Sites (20+ countries)", value: "59+" },
-    { label: "Languages", value: "10+" },
-    { label: "WP Themes", value: "9+" },
-  ],
   skills: {
-    languages: ["JavaScript", "HTML/CSS", "Python", "Java", "PHP", "TypeScript"],
+    languages: ["JavaScript", "Python", "Java", "PHP", "TypeScript"],
     frameworks: ["React", "Next.js", "Astro"],
     tools: [
       "Git/GitHub",
@@ -129,7 +195,7 @@ const profile: Profile = {
       icon: "MapPin",
       title: "Mapbox",
       description:
-        "Interactive maps, tour guides, and location-based features with Mapbox.",
+        "Interactive maps and location-based features with Mapbox.",
     },
   ],
   knowsAbout: [
@@ -146,6 +212,71 @@ const profile: Profile = {
     "Multi-language Localization",
     "International SEO",
   ],
+  highlights: [
+    { label: "Tourism Sites (20+ countries)", value: "59+" },
+    { label: "Languages", value: "10+" },
+    { label: "WP Themes", value: "9+" },
+  ],
+  structuredData: {
+    person: {
+      address: {
+        addressLocality: "Davao City",
+        addressCountry: "PH",
+      },
+      alumniOf: {
+        name: "University of Mindanao",
+      },
+      hasCredential: [
+        {
+          name: "IT Specialist - Network Security",
+          credentialCategory: "certificate",
+        },
+        {
+          name: "IT Specialist - Database",
+          credentialCategory: "certificate",
+        },
+        {
+          name: "IT Specialist - Java",
+          credentialCategory: "certificate",
+        },
+      ],
+    },
+  },
+  seo: {
+    defaultDescription: "KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire.",
+    defaultKeywords: "KJ Dutaro, Kristee Joy Dutaro, Frontend Developer, React Developer, JavaScript Developer, Chrome Extension Developer, Touring Microsites, Map API Integration, Remote Developer Philippines, Freelance Web Developer, Web Development Services",
+    defaultOgImage: "/img/hero.jpg",
+    pages: {
+      home: {
+        title: "KJ Dutaro – Frontend / Web Developer | Portfolio",
+        description: "KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire.",
+        keywords: "KJ Dutaro, Kristee Joy Dutaro, Frontend Developer, React Developer, JavaScript Developer, Chrome Extension Developer, Touring Microsites, Map API Integration, Remote Developer Philippines, Freelance Web Developer, Web Development Services",
+      },
+      projects: {
+        title: "Projects – KJ Dutaro | Web Development Portfolio",
+        description: "KJ Dutaro (Kristee Joy Dutaro) - Web development projects: 30+ touring microsites with map API integration, 6 Chrome extensions, custom WordPress themes. React, JavaScript, and modern web applications.",
+        keywords: "KJ Dutaro projects, Kristee Joy Dutaro projects, web development portfolio, touring microsites, Chrome extensions, map API integration, React projects, JavaScript applications",
+      },
+      blog: {
+        title: "Blog – KJ Dutaro | Web Development & React Tutorials",
+        description: "KJ Dutaro (Kristee Joy Dutaro) - Web development blog featuring React tutorials, Chrome extension development, map API integration, and JavaScript best practices. Coming soon.",
+        keywords: "KJ Dutaro blog, Kristee Joy Dutaro blog, web development tutorials, React tutorials, Chrome extension development, JavaScript best practices, map API guides",
+      },
+      resume: {
+        title: "Resume – KJ Dutaro | Frontend / Web Developer",
+        description: "KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer resume: React, JavaScript, 30+ touring microsites, 6 Chrome extensions. Remote developer based in Philippines. Download CV PDF.",
+        keywords: "KJ Dutaro resume, Kristee Joy Dutaro resume, frontend developer CV, React developer, remote developer Philippines, Chrome extension developer, download resume PDF",
+      },
+    },
+  },
+  stats: {
+    totalProjects: 14,
+    totalLanguages: 6,
+    totalFrameworks: 3,
+    totalTools: 8,
+    totalCertifications: 3,
+    yearsExperience: 2,
+  },
 };
 
 export default profile;

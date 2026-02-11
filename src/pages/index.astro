@@ -17,9 +17,9 @@ import profile from "../data/profile";
 ---
 
 <BaseLayout
-  title={`${profile.name} – ${profile.title} | Portfolio`}
-  description="Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire."
-  keywords="Kristee Joy Dutaro, frontend developer portfolio, React developer, Chrome extension developer, touring microsites, map API integration, remote developer Philippines, freelance web developer"
+  title={profile.seo.pages.home.title}
+  description={profile.seo.pages.home.description}
+  keywords={profile.seo.pages.home.keywords}
 >
   <Hero />
   <ProjectsPreview />

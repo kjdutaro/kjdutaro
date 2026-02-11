@@ -34,10 +34,10 @@ const formatDate = (d: Date) =>
 ---
 
 <BaseLayout
-  title={`Resume – ${profile.name} | Frontend / Web Developer`}
-  description="Frontend / Web Developer resume: React, JavaScript, 30+ touring microsites, 6 Chrome extensions. Remote developer based in Philippines. Download CV PDF."
+  title={profile.seo.pages.resume.title}
+  description={profile.seo.pages.resume.description}
   canonical="/resume"
-  keywords="Kristee Joy Dutaro resume, frontend developer CV, React developer, remote developer Philippines, Chrome extension developer, download resume PDF"
+  keywords={profile.seo.pages.resume.keywords}
 >
   <article class="c-section">
     <div class="c-container max-w-4xl">

@@ -16,10 +16,10 @@ const unfeatured = sorted.filter((p) => !p.data.featured);
 ---
 
 <BaseLayout
-  title={`Projects – ${profile.name} | Web Development Portfolio`}
-  description="Web development projects: 30+ touring microsites with map API integration, 6 Chrome extensions, custom WordPress themes. React, JavaScript, and modern web applications."
+  title={profile.seo.pages.projects.title}
+  description={profile.seo.pages.projects.description}
   canonical="/projects"
-  keywords="Kristee Joy Dutaro projects, web development portfolio, touring microsites, Chrome extensions, map API integration, React projects, JavaScript applications"
+  keywords={profile.seo.pages.projects.keywords}
 >
   <section class="c-section">
     <div class="c-container">
@@ -48,6 +48,7 @@ const unfeatured = sorted.filter((p) => !p.data.featured);
                   description={project.data.description}
                   tech={project.data.tech}
                   github={project.data.github}
+                  githubRepo={project.data.githubRepo}
                   liveLink={project.data.liveLink}
                   image={project.data.image}
                   featured={project.data.featured}
@@ -74,6 +75,7 @@ const unfeatured = sorted.filter((p) => !p.data.featured);
                   description={project.data.description}
                   tech={project.data.tech}
                   github={project.data.github}
+                  githubRepo={project.data.githubRepo}
                   liveLink={project.data.liveLink}
                   image={project.data.image}
                   featured={project.data.featured}
