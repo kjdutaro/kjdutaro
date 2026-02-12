@@ -24,8 +24,29 @@ const schemaMarkup = {
   author: {
     "@type": "Person",
     name: profile.name,
+    url: profile.siteUrl,
+    email: profile.contact.email,
   },
   keywords: tags.join(", "),
+  publisher: {
+    "@type": "Person",
+    name: profile.name,
+    url: profile.siteUrl,
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(`/blog/${entry.slug}`, Astro.site).toString(),
+  },
+  image: {
+    "@type": "ImageObject",
+    url: new URL(profile.seo.defaultOgImage, Astro.site).toString(),
+  },
+  inLanguage: "en-US",
+  isPartOf: {
+    "@type": "Blog",
+    name: `${profile.name} Blog`,
+    url: new URL("/blog", Astro.site).toString(),
+  },
 };
 ---
 
@@ -34,6 +55,7 @@ const schemaMarkup = {
   description={description}
   canonical={`/blog/${entry.slug}`}
   keywords="web development blog, WordPress tips, tourism site development, SEO for tourism"
+  ogImage={entry.data.image || profile.seo.defaultOgImage}
 >
   <script
     type="application/ld+json"

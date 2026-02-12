@@ -22,7 +22,7 @@ const defaultKeywords =
   "Kristee Joy Dutaro, frontend developer, React developer, JavaScript developer, Chrome extension developer, touring microsites, map API integration, remote developer Philippines";
 const metaKeywords = keywords ?? defaultKeywords;
 
-/* JSON-LD structured data for Person / Website / Professional Service — Enhanced for SEO */
+/* JSON-LD structured data for Person / Website / Professional Service / WebPage — Enhanced for SEO */
 const schemaMarkup = [
   {
     "@context": "https://schema.org",
@@ -78,6 +78,29 @@ const schemaMarkup = [
         urlTemplate: `${profile.siteUrl}/search?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description: description,
+    url: new URL(canonical, Astro.site).toString(),
+    inLanguage: "en-US",
+    isPartOf: {
+      "@type": "WebSite",
+      name: `${profile.name}`,
+      url: profile.siteUrl,
+    },
+    about: {
+      "@type": "Thing",
+      name: "Web Development Portfolio",
+      description: "Professional portfolio showcasing frontend development projects and services",
+    },
+    dateModified: new Date().toISOString(),
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: new URL(ogImage, Astro.site).toString(),
     },
   },
   {
@@ -163,6 +186,14 @@ const schemaMarkup = [
     <meta name="page-topic" content="Personal Portfolio, Web Development" />
     <meta property="og:locale:alternative" content="en_PH" />
 
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@kjorken" />
+    <meta name="twitter:creator" content="@kjorken" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
     <!-- JSON-LD Schema -->
     <script
       type="application/ld+json"
@@ -170,24 +201,20 @@ const schemaMarkup = [
     />
 
     <!-- Comprehensive Favicon -->
-    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/icons/icon48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/icons/icon64.png" />
-    <link rel="icon" type="image/png" sizes="128x128" href="/icons/icon128.png" />
-    
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-    
-    <!-- Android Chrome -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-chrome.png" />
-    <meta name="theme-color" content="#0a0a0b" />
-    
-    <!-- Microsoft Tile -->
-    <meta name="msapplication-TileColor" content="#0a0a0b" />
-    <meta name="msapplication-TileImage" content="/icons/icon144.png" />
-    
+    <meta name="theme-color" content="#0a0a0b">
+    <meta name="msapplication-TileColor" content="#0a0a0b">
+    <meta name="msapplication-TileImage" content="/assets/icons/icon128.png" />
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/icon16.png">
+    <link rel="icon" type="image/png" sizes="24x24" href="/assets/icons/icon24.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/icon32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/icon48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/icon64.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="/assets/icons/icon128.png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-chrome.png">
+
     <!-- Humans.txt & LLMs.txt -->
     <link rel="author" href="/humans.txt" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site info" />

@@ -124,7 +124,7 @@ const profile: Profile = {
   bio: {
     short: "Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ websites with map APIs, 6 Chrome extensions.",
     full: [
-      "Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ websites with integrated map APIs, improving load times by ~20% and search visibility through performance optimization. Developed 6 Chrome extensions using JavaScript and Chrome Extensions API. Expertise in responsive design and delivering maintainable web applications using HTML, CSS, React.js, and Next.js.",
+      "Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ websites with integrated map APIs, improving load times by ~20% and search visibility through performance optimization. Developed 6 Chrome extensions using JavaScript and Chrome Extensions API. Expertise in responsive design and delivering maintainable web applications ,  with  a  focus  on  performance  optimization  and  clean, maintainable code. Experienced working remotely and delivering projects independently.",
     ],
     seo: "KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ websites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire.",
   },
@@ -245,7 +245,7 @@ const profile: Profile = {
   seo: {
     defaultDescription: "KJ Dutaro - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire.",
     defaultKeywords: "KJ Dutaro, Frontend Developer, React Developer, JavaScript Developer, Chrome Extension Developer, Touring Microsites, Map API Integration, Remote Developer Philippines, Freelance Web Developer, Web Development Services",
-    defaultOgImage: "/img/hero.jpg",
+    defaultOgImage: "/assets/img/hero.jpg",
     pages: {
       home: {
         title: "KJ Dutaro – Frontend / Web Developer | Portfolio",
