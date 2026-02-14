@@ -1,14 +1,15 @@
 # KJ Dutaro Portfolio Documentation
 
-> KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies. Built 30+ touring microsites with map APIs, 6 Chrome extensions. Remote developer based in Philippines available for hire.
+> KJ Dutaro (Kristee Joy Dutaro) - Frontend Web Developer specializing in JavaScript, HTML, CSS, Mapbox integration, and WordPress themes. Built 60+ responsive websites with focus on UI/UX and performance optimization. Remote developer based in Philippines available for hire.
 
-> KJ Dutaro (Kristee Joy Dutaro) - Frontend / Web Developer specializing in React, JavaScript, and modern web technologies.
-> Built 30+ touring microsites with map APIs, 6 Chrome extensions.
+> KJ Dutaro (Kristee Joy Dutaro) - Frontend Web Developer specializing in JavaScript, React, and modern web technologies.
+> Built 60+ responsive websites with Mapbox integration and custom WordPress themes.
+> Focus on UI/UX, performance optimization, and technical SEO.
 > Remote developer based in Philippines available for hire.
 
 ## About
 
-Kristee Joy Dutaro is a Frontend / Web Developer specializing in JavaScript, React, and modern web technologies. Built and deployed 30+ touring microsites with integrated map APIs, improving load times by ~20% through performance optimization and SEO best practices. Developed 6 Chrome extensions and converted 5+ static templates into custom WordPress themes. Expertise in full-stack development, responsive design, and delivering maintainable, user-focused web applications using HTML, CSS, JavaScript, React.js, and Next.js.
+Kristee Joy Dutaro is a Frontend Web Developer specializing in JavaScript, HTML, CSS, and modern web technologies. Built and deployed 60+ responsive websites featuring interactive Mapbox maps and custom WordPress themes, with a focus on UI/UX, performance optimization, and technical SEO. Developed 4 Chrome extensions and converted 9+ static templates into custom WordPress themes. Expertise in frontend development, responsive design, and delivering maintainable, user-focused web applications using HTML, CSS, JavaScript, React.js, and Next.js.
 
 ## Technical Skills
 
@@ -28,10 +29,10 @@ Technical skills are structured in the main profile data:
 
 ## Experience
 
-- **Freelance Frontend/Web Developer** (May 2025 - Present): Building touring and location-based microsites
-- **Freelance WordPress Custom Theme Developer** (Jan 2025 - Apr 2025): Custom WordPress theme development
-- **Freelance Software Developer** (Oct 2024 - Dec 2024): Chrome extension development
-- **Fullstack Developer at Jairosoft Inc.** (Jun 2024 - Aug 2024): Internal timesheet management system
+- **Freelance Frontend/Web Developer** (May 2025 - Present): Building touring and location-based microsites with Mapbox integration
+- **Freelance WordPress Custom Theme Developer** (Jan 2025 - Apr 2025): Custom WordPress theme development using PHP, HTML, CSS, and ACF
+- **Freelance Chrome Extension Developer** (Oct 2024 - Dec 2024): UI fixes and feature enhancements for Chrome extensions
+- **Web Developer Intern at Jairosoft Inc.** (Jun 2024 - Aug 2024): Internal timesheet management system frontend development
 
 ## Education
 

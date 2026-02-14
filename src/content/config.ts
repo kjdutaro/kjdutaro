@@ -44,6 +44,10 @@ const experience = defineCollection({
     endDate: z.date().optional(),
     description: z.string(),
     current: z.boolean().default(false),
+    links: z.array(z.object({
+      label: z.string(),
+      url: z.string(),
+    })).optional(),
   }),
 });
 

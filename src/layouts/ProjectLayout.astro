@@ -4,7 +4,6 @@
  * Metadata, tech tags, prose content, and action links.
  */
 import BaseLayout from "./BaseLayout.astro";
-import TourismSiteGrid from "../components/TourismSiteGrid.astro";
 import { Github, ExternalLink } from "@lucide/astro";
 import type { CollectionEntry } from "astro:content";
 import profile from "../data/profile";
@@ -86,9 +85,6 @@ const schemaMarkup = {
       <div class="prose max-w-none mb-8">
         <slot />
       </div>
-
-      <!-- Special grid for tourism-sites project -->
-      {entry.slug === "tourism-sites" && <TourismSiteGrid />}
 
       <!-- Action links -->
       <div class="flex gap-3 pt-8 border-t-2 border-[var(--border-default)]">

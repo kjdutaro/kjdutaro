@@ -1,0 +1,4 @@
+PDF BLENDER - https://chromewebstore.google.com/detail/pdf-blender/bnghkilhlnchpoihpenhcnljfepgjepn
+PDF DIVIDER - https://chromewebstore.google.com/detail/pdf-divider/hbfhampgjhcjleionolnapofdpnooapb - https://github.com/pixelpylon/pdfdivider.chrome/commits/main/
+Emoji Copy Paster - https://chromewebstore.google.com/detail/emoji-copy-paster/epgodgmidigggeeoofhfmbhljapllkho
+Sitemap Generator - https://chromewebstore.google.com/detail/sitemap-generator/kgidpmgjombekdkhnlkbhaoenldlpmeb

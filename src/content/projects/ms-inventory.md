@@ -2,7 +2,7 @@
 title: M&S Inventory Management
 description: A full-stack inventory management system for tracking products, stock levels, and automated reorder notifications. Built with Next.js, Prisma, Tailwind CSS, and TypeScript with comprehensive testing using Cypress and Electron desktop app support.
 date: 2023-11-05
-featured: true
+featured: false
 category: personal
 tech: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS", "Cypress", "Electron"]
 github: https://github.com/kjorken/M-and-S-Inventory-Management

@@ -8,14 +8,14 @@ tech: ["HTML5", "CSS3", "JavaScript", "Firebase", "SEO", "Localization", "Conten
 liveLink: https://onejourneytours.com/
 ---
 
-OneJourney Tours is a site maintained by my client; I do development work under them. I help with website updates and feature implementation, blog content generation with AI assistance, multi-language localization across languages, and SEO optimization. My client is primarily responsible for maintaining the site; I support with building, changes, and deployment as needed.
+OneJourney Tours is a site maintained by the client; I handle development work including website updates and feature implementation, blog content generation with AI assistance, multi-language localization across languages, and SEO optimization.
 
 ## What I Help With
 
 - Web application development and feature implementation
 - Website updates and feature additions
 - Blog post creation and publishing with AI assistance
-- Multi-language content translation and localization (10+ languages)
+- Multi-language content translation and localization (English, German, French, Italian, Spanish, Portuguese)
 - SEO optimization for global search visibility
 - Performance and Firebase optimization when requested
 

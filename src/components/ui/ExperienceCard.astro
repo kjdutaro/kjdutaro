@@ -10,9 +10,10 @@ interface Props {
   endDate?: Date;
   description: string;
   current?: boolean;
+  links?: Array<{ label: string; url: string }>;
 }
 
-const { title, company, startDate, endDate, description, current = false } = Astro.props;
+const { title, company, startDate, endDate, description, current = false, links } = Astro.props;
 
 const formatDate = (date: Date) => {
   return new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
@@ -39,5 +40,20 @@ const formatDate = (date: Date) => {
     </p>
 
     <p class="text-[var(--text-muted)] mt-2 leading-relaxed text-sm">{description}</p>
+
+    {links && links.length > 0 && (
+      <div class="flex flex-wrap gap-3 mt-3">
+        {links.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-xs text-[var(--accent)] hover:underline"
+          >
+            {link.label} ↗
+          </a>
+        ))}
+      </div>
+    )}
   </div>
 </div>

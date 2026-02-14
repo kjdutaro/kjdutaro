@@ -36,8 +36,6 @@ The timesheets management system was designed to streamline how the company trac
 
 ## Key Learnings & Experience
 
-Read my detailed blog post: [Timesheets Management System: Lessons from Building an Internal Tool](/blog/timesheets-management-learnings/)
-
 Key takeaways include:
 - Database optimization for reporting queries
 - User experience design for enterprise applications

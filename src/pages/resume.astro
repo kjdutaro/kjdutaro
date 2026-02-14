@@ -52,7 +52,7 @@ const formatDate = (d: Date) =>
               {profile.title}
             </p>
           </div>
-          <a href="/Resume.pdf" download class="c-btn c-btn-primary h-11 px-6 whitespace-nowrap">
+          <a href="/DUTARO_KRISTEEJOY-Resume.pdf" download class="c-btn c-btn-primary h-11 px-6 whitespace-nowrap">
             <Download size={18} aria-hidden="true" />
             Download Resume
           </a>
@@ -169,6 +169,20 @@ const formatDate = (d: Date) =>
               <p class="text-sm text-[var(--text-muted)] leading-relaxed">
                 {exp.data.description}
               </p>
+              {exp.data.links && exp.data.links.length > 0 && (
+                <div class="flex flex-wrap gap-4 mt-3">
+                  {exp.data.links.map((link) => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="font-mono text-xs text-[var(--accent)] hover:underline"
+                    >
+                      {link.label} ↗
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           ))
         }

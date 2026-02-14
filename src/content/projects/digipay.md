@@ -1,33 +1,36 @@
 ---
 title: DigiPay
-description: A Figma UI/UX design prototype for a comprehensive payroll application. Features interactive prototypes demonstrating employee management, salary calculations, and real-time dashboard functionality.
+description: A Flutter mobile application for comprehensive payroll management. Features employee management, salary calculations, deductions processing, and real-time dashboard with data visualization.
 date: 2024-05-15
 featured: false
-category: prototype
-tech: [Figma, "UI/UX Design", Prototyping, "Interaction Design"]
+category: personal
+tech: ["Flutter", "Dart", "Firebase", "UI/UX Design", "State Management"]
+github: https://github.com/kjorken/DigiPay
 ---
 
-DigiPay is a comprehensive payroll management system design created in Figma. The interactive prototype demonstrates the user flows and interface design for managing employee salaries, deductions, and payment processing with a modern, intuitive dashboard.
+DigiPay is a comprehensive payroll management system built with Flutter. The application provides a modern, intuitive interface for managing employee salaries, deductions, and payment processing.
 
-## Design Overview
+## Features
 
-This is a **design prototype** showcasing the user interface and interactions for a payroll application. The prototype demonstrates:
 - Employee management and profile interfaces
-- Salary calculation workflows
+- Salary calculation workflows with tax deductions
 - Payment processing screens
-- Real-time dashboard visualization
+- Real-time dashboard with data visualization
 - Report generation interfaces
+- Secure data storage with Firebase backend
 
-## Design Features
+## Technical Implementation
 
-- Clean, modern interface with intuitive navigation
-- Responsive design considerations for web and tablet
-- Interactive prototype demonstrating user flows
-- Color-coded status indicators and data visualization
-- Accessibility-focused design principles
+- **Framework:** Flutter for cross-platform mobile development
+- **State Management:** Provider/ Riverpod for efficient state handling
+- **Backend:** Firebase for real-time database and authentication
+- **UI:** Material Design with custom theming
 
-## Technologies Used
+## Skills Demonstrated
 
-- Design Tool: Figma
-- Prototyping: Figma interactive components
-- User Research: Payroll system UX best practices
+- Cross-platform mobile development
+- State management patterns
+- RESTful API integration
+- UI/UX design implementation
+- Data visualization
+- Security best practices for financial applications

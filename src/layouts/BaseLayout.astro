@@ -18,12 +18,37 @@ const {
   canonical = Astro.url.pathname,
 } = Astro.props;
 
-const defaultKeywords =
-  "Kristee Joy Dutaro, frontend developer, React developer, JavaScript developer, Chrome extension developer, touring microsites, map API integration, remote developer Philippines";
+const defaultKeywords = profile.seo.defaultKeywords;
 const metaKeywords = keywords ?? defaultKeywords;
 
-/* JSON-LD structured data for Person / Website / Professional Service / WebPage — Enhanced for SEO */
+/* JSON-LD structured data for Person / Organization / Website / Professional Service / WebPage — Enhanced for SEO */
 const schemaMarkup = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: `${profile.name} - Web Development`,
+    alternateName: profile.fullName,
+    url: profile.siteUrl,
+    description: "Full Stack Developer portfolio offering web development, WordPress themes, and map integration services.",
+    image: new URL(ogImage, Astro.site).toString(),
+    email: profile.contact.email,
+    telephone: profile.contact.phone,
+    sameAs: [profile.social.github, profile.social.linkedin],
+    founder: {
+      "@type": "Person",
+      name: profile.fullName,
+      url: profile.siteUrl
+    },
+    areaServed: "Worldwide",
+    availableLanguage: ["en"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: profile.contact.email,
+      telephone: profile.contact.phone,
+      availableLanguage: ["English"],
+      contactType: "customer service"
+    }
+  },
   {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -109,12 +134,12 @@ const schemaMarkup = [
     name: `${profile.name} - Web Development Services`,
     alternateName: `${profile.fullName} Web Development`,
     url: profile.siteUrl,
-    description: "Frontend / Web Development services specializing in React, JavaScript, touring microsites, Chrome extensions, and modern web technologies.",
+    description: "Full Stack Development services specializing in JavaScript, HTML, CSS, and modern web technologies.",
     areaServed: "Worldwide",
     availableLanguage: ["English"],
-    serviceType: [
+      serviceType: [
       "Web Development",
-      "Frontend Development",
+      "Full Stack Development",
       "WordPress Theme Development",
       "Chrome Extension Development",
       "Website Maintenance",

@@ -1,7 +1,7 @@
 ---
 title: Exponential LSTM
 description: A machine learning project implementing LSTM (Long Short-Term Memory) neural networks for time series prediction with exponential growth patterns. Demonstrates deep learning fundamentals using TensorFlow and PyTorch.
-date: 2023-10-20
+date: 2025-05-01
 featured: false
 category: academic
 tech: ["Python", "TensorFlow", "PyTorch", "NumPy", "Pandas", "Jupyter", "Machine Learning"]
